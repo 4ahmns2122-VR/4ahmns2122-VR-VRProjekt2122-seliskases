@@ -46,7 +46,7 @@ Shader "Custom/Snow" {
         sampler2D _SnowNormal;
         fixed4 _SnowColor;
         float4 _SnowDirection;
-        float4 _SnowFalloff;
+        float _SnowFalloff;
         float _SnowGlossiness;
         float _SnowMetallic;
  
@@ -67,7 +67,7 @@ Shader "Custom/Snow" {
             float3 snowNormals = UnpackNormal(tex2D(_SnowNormal, IN.uv_SnowNormal));
             half snowDot = dot(WorldNormalVector(IN, normals), normalize(_SnowDirection));
             half3 snowDot01 = clamp(snowDot, 0, 1);
-            float t = exp(-snowDot01 * _SnowFalloff);
+            float t = -(exp(snowDot01 * (-5 * _SnowFalloff)) * (1 - snowDot01)) + 1;
  
             o.Normal = lerp(normals, snowNormals, t);
             o.Albedo = lerp(c.rgb, snowColor.rgb, t);
