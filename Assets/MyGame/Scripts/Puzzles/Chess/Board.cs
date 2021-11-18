@@ -46,7 +46,7 @@ namespace UnityEngine.Chess
 
         #region Private Methods
 
-        private void Start()
+        public Board()
         {
             CreateGraphicalBoard();
             LoadPuzzle(puzzles[currentPuzzleIndex]);
