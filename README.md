@@ -1,27 +1,105 @@
-# XRInteractionToolkitTemplate
+# VRProjekt2122-seliskases
 
-### Project description: 
-This project serves as sample project for spatial audio. 
-Explore sound in its basics in virtual reality (VR).
+## MVP
+Plattform: Oculus Quest
 
-### Development platform: 
-OS: Windows 10, Game Engine: Unity 2020.3.18f1, Visual Studio 2019, XR Interaction Toolkit
+## Ablauf
+Das Spiel dreht sich um den Kontrast zwischen Licht und Dunkelheit, Kälte und
+Wärme. Das Labyrinth besteht aus Schnee und Eis. Am Ausgang des Labyrinths
+steht eine Feuerschale. Um aus dem Labyrinth zu entkommen, muss diese Schale
+entzündet werden.
 
-## Software/Hardware Requirements: 
-Oculus hardware requirements https://support.oculus.com/248749509016567/
-You need a VR headset in this case an Oculus Rift/Quest/Quest2
+Zu Beginn muss in einer gewissen Zeit eine Fackel gefunden werden, sonst erfriert
+der Spieler. (Die ablaufende Zeit wird durch eine Zeitleiste angezeigt.) Wenn der
+Spieler die Fackel gefunden hat, muss er nicht mehr gegen die Zeit anspielen.
 
-When downlaoded, you have compile time errors in the project. To solve them install the XR interaction toolkit package via the Package Manager. (!Enable in Advanced Settings Preview Packages).
+Mithilfe der Fackel muss der Spieler den Ausgang des Labyrinths finden. Dabei
+kommt er allerdings an ein Hindernis: ein Schneemann steht im Weg. Der Spieler
+muss den Schneemann mit den Händen zerstören.
 
-### Target platform: 
-Oculus Rift/S; Quest/2
+Optional: Wenn der Spieler beim Zerstören des Schneemanns nicht geschickt
+vorgeht und der Schneemann zum Spieler umkippt, erlischt die Fackel. Dadurch
+entsteht wieder der zeitliche Druck, nicht zu erfrieren.
 
-### Visuals: 
-Screenshots (concept and experience), Video
+Wenn der Spieler den Ausgang und damit die Feuerschale findet, muss der Spieler
+ein zufällig generiertes Schachrätsel lösen.
 
-### Third party material: 
-For testing without a headset, use the XR Device Simulator (included in the xr interaction toolkit package):  https://www.youtube.com/watch?v=d4bTpkvBwrs
+MVP: Das Schachbrett wird als 2D-Fenster angezeigt
+Optional: Der Spieler steht vor einem physischen Schachbrett im 3D-Raum
 
-### Limitations/Problems: 
+Auch hier muss der Spieler gegen die Zeit ankämpfen. Auditiv wird dies vom
+Geräusch einer tickenden Uhr untermalt. Schafft der Spieler das Rätsel nicht
+rechtzeitig und macht einen Fehler, verliert er das Spiel und muss von vorn
+beginnen.
 
-Copyright by smeerws :)
+MVP: Wenn der Spieler das Schach-Rätsel geschafft hat, öffnet sich der Ausgang
+Optional: Schafft der Spieler das Schach-Rätsel, muss er das Holz, in welches sich
+das Schachbrett dann verwandelt, zur Feuerschale bringen und mit der Fackel
+entflammen. Dadurch schmilzt der Ausgang.
+
+So werden drei Fähigkeiten des Spielers auf die Probe gestellt: Orientierung,
+Geschicklichkeit und Strategie.
+
+## Auditive Gestaltung
+Auditive Elemente werden vorrangig eingesetzt, um den Spieler bei der Orientierung
+zu unterstützen. So leitet beispielsweise zu Beginn das Geräusch des Brennens der
+Fackel dem Spieler den Weg.
+Die Ambiance-Geräusche sollten im Spieler ein Gefühl von Unbehagen, Kälte und
+Einsamkeit auslösen (beispielsweise durch einen dezenten Hall).
+
+Zu Beginn (bevor der Spieler die Fackel gefunden hat) ist der Ton dumpf bzw. leicht
+verzerrt, um dem Spieler ein Gefühl von Kälte und Dringlichkeit zu vermitteln.
+
+Sounds:
+• Ambiance (Wind, Vögel, etc.)
+• Footsteps
+• Fackel
+• Fallender Schnee (Schneemann)
+• Schachfiguren (Ziehen, Schlagen, etc.)
+• Benennende Feuerschale
+
+## Visual Style
+Das Spiel soll auf einen dunklen und kalten Low-Poly Style setzen.
+Optional: Bei Kälte und Erfrieren kommen Post-Processing Shader zum Einsatz,
+welche das Bild subtil verzerren, ohne für den Spieler unangenehm zu sein.
+
+## Zeitliche Einteilung
+1. Meilenstein (1. Dezember 2021)
+• Funktionierender Build
+• Teleportation
+• Funktionierendes Schach-Puzzle
+
+2. Meilenstein: 22. Dezember 2021
+• Alle Puzzles funktionieren
+
+3. Meilenstein (19. Jänner 2021):
+• Fertige eingebaute Ambiance-Sounds
+• 3D-Modelle & Animationen eingebaut
+• Optional: Post-Processing
+
+## Arbeitsschritte
+1. Projekt-Setup (GitHub Projekt, etc…)
+2. Erster Test-Build auf Oculus Quest
+3. Konzeption der Code-Architektur
+4. Scene Setup (Einfügung aller Ressourcen)
+5. Implementierung des Character Movements (Teleportation, etc.)
+6. Schach-Rätsel Programmierung (Whiteboxing)
+7. Erste Testung
+8. Fackel-Rätsel Programmierung (Whiteboxing)
+9. Schneemann Programmierung (Whiteboxing)
+10. Ambiance-Sounds
+11. Schach-Rätsel Auditiv & Visuell
+12. Fackel-Rätsel Auditiv & Visuell
+13. Schneemann-Rätsel Auditiv & Visuell
+14. Zweite Testung & Feedback
+15. 3D-Modellierung
+16. Schnee Shader
+17. Zusätzliches Sound-Design
+18. Post-Processing Shader
+19. Dokumentation (Read Me, etc.)
+20. Endtestung
+21. Abgabe
+
+## Assets
+ - https://www.turbosquid.com/3d-models/snowman-christmas-3d-model-1670626
+ - https://www.turbosquid.com/3d-models/tree-pixel-low-poly-3d-model-1764347
