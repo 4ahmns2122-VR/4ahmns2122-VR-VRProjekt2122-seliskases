@@ -7,23 +7,22 @@ Shader "Custom/Snow" {
         _MainNormal ("MainNormal", 2D) = "bump" {}
          
         [Header(Snow info)]
-        _SnowTexture("Snow texture", 2D) = "white" {}
-        _SnowNormal("Snow normal", 2D) = "bump" {}
-        _SnowColor("Snow color", color) = (1,1,1,1)
-        _SnowDirection ("Snow direction", Vector) = (0, 1, 0)
-        _SnowFalloff ("Snow falloff", Range(0, 1)) = 0.5
-        _SnowGlossiness("Snow glossiness", Range(0, 1)) = 0.5
+        _SnowTexture("Snow Texture", 2D) = "white" {}
+        _SnowNormal("Snow Normal", 2D) = "bump" {}
+        _SnowColor("Snow Color", color) = (1,1,1,1)
+        _SnowDirection ("Snow Direction", Vector) = (0, 1, 0)
+        _SnowFalloff ("Snow Falloff", Range(0, 1)) = 0.5
+        _SnowGlossiness("Snow Glossiness", Range(0, 1)) = 0.5
         _SnowMetallic ("Snow Metallic", Range(0,1)) = 0.0
+        _SnowDisplacementStrength ("Snow Dislpacement Strength", Range(0, 1)) = 0
+        _SnowSharpness ("Snow Sharpness", Range(0, 4)) = 0
     }
     SubShader {
         Tags { "RenderType"="Opaque" }
         LOD 200
          
         CGPROGRAM
-        // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows
- 
-        // Use shader model 3.0 target, to get nicer looking lighting
+        #pragma surface surf Standard addshadow vertex:vert
         #pragma target 3.0
  
         sampler2D _MainTex;
@@ -49,25 +48,27 @@ Shader "Custom/Snow" {
         float _SnowFalloff;
         float _SnowGlossiness;
         float _SnowMetallic;
- 
- 
-        // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
-        // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
-        // #pragma instancing_options assumeuniformscaling
-        UNITY_INSTANCING_BUFFER_START(Props)
-            // put more per-instance properties here
-        UNITY_INSTANCING_BUFFER_END(Props)
+        float _SnowDisplacementStrength;
+        float _SnowSharpness;
+
+        void vert(inout appdata_full data, out Input IN) {
+            half displacementMask = dot(data.normal.xyz, normalize(_SnowDirection));
+            half3 displacementMask01 = clamp(displacementMask, 0, 1);
+
+            float3 displacementDir = normalize(data.normal.xyz + _SnowDirection.xyz * _SnowSharpness);
+            data.vertex.xyz += displacementMask01 * _SnowDisplacementStrength * displacementDir;
+            UNITY_INITIALIZE_OUTPUT(Input, IN);
+        }   
  
         void surf (Input IN, inout SurfaceOutputStandard o) {
-            //Color and normals of the main textures
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             float3 normals = UnpackNormal (tex2D(_MainNormal, IN.uv_MainNormal));
-            //Color and normals of the snow textures
+
             fixed4 snowColor = tex2D(_SnowTexture, IN.uv_SnowTexture) * _SnowColor;
             float3 snowNormals = UnpackNormal(tex2D(_SnowNormal, IN.uv_SnowNormal));
             half snowDot = dot(WorldNormalVector(IN, normals), normalize(_SnowDirection));
             half3 snowDot01 = clamp(snowDot, 0, 1);
-            float t = -(exp(snowDot01 * (-5 * _SnowFalloff)) * (1 - snowDot01)) + 1;
+            float t = -exp(snowDot01 * (100 * _SnowFalloff - 100)) * (1 - snowDot01) + 1;
  
             o.Normal = lerp(normals, snowNormals, t);
             o.Albedo = lerp(c.rgb, snowColor.rgb, t);
