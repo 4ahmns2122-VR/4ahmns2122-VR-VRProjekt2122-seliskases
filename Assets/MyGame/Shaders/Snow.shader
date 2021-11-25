@@ -22,8 +22,11 @@ Shader "Custom/Snow" {
         LOD 200
          
         CGPROGRAM
-        #pragma surface surf Standard addshadow vertex:vert
+
         #pragma target 3.0
+        #pragma surface surf Standard addshadow vertex:vert
+
+        #pragma multi_compile FULLFORWARDSHADOWS_ON FULLFORWARDSHADOWS_OFF
  
         sampler2D _MainTex;
  
@@ -52,12 +55,13 @@ Shader "Custom/Snow" {
         float _SnowSharpness;
 
         void vert(inout appdata_full data, out Input IN) {
+            UNITY_INITIALIZE_OUTPUT(Input, IN);
+
             half displacementMask = dot(data.normal.xyz, normalize(_SnowDirection));
             half3 displacementMask01 = clamp(displacementMask, 0, 1);
 
             float3 displacementDir = normalize(data.normal.xyz + _SnowDirection.xyz * _SnowSharpness);
             data.vertex.xyz += displacementMask01 * _SnowDisplacementStrength * displacementDir;
-            UNITY_INITIALIZE_OUTPUT(Input, IN);
         }   
  
         void surf (Input IN, inout SurfaceOutputStandard o) {
@@ -76,7 +80,10 @@ Shader "Custom/Snow" {
             o.Smoothness = lerp(_Glossiness, _SnowGlossiness, t);
             o.Alpha = c.a;
         }
+
         ENDCG
     }
+
+    CustomEditor "SnowShaderInspector"
     FallBack "Diffuse"
 }
