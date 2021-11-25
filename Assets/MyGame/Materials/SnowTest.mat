@@ -74,7 +74,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0
+    - _Glossiness: 1
     - _GlossyReflections: 1
     - _LightingModell: 0
     - _Metallic: 0
@@ -84,7 +84,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SnowDisplacement: 1
     - _SnowDisplacementStrength: 1
-    - _SnowFalloff: 0.718
+    - _SnowFalloff: 0
     - _SnowGlossiness: 0
     - _SnowMetallic: 0
     - _SnowSharpness: 0
@@ -93,8 +93,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.8260877, b: 0, a: 1}
+    - _Color: {r: 1, g: 0.827451, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SnowColor: {r: 0.8232467, g: 0.9216745, b: 0.9433962, a: 1}
+    - _SnowColor: {r: 0.9009434, g: 0.98082775, b: 1, a: 1}
     - _SnowDirection: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

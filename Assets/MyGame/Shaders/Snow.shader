@@ -24,7 +24,7 @@ Shader "Custom/Snow" {
         CGPROGRAM
 
         #pragma target 3.0
-        #pragma surface surf Standard addshadow vertex:vert
+        #pragma surface surf Standard fullforwardshadows vertex:vert
 
         #pragma multi_compile FULLFORWARDSHADOWS_ON FULLFORWARDSHADOWS_OFF
  
