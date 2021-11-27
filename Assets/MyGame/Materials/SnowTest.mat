@@ -95,9 +95,9 @@ Material:
     - _SnowDisplacement: 1
     - _SnowDisplacementStrength: 0
     - _SnowFalloff: 0
-    - _SnowGlossiness: 0
+    - _SnowGlossiness: 1
     - _SnowMetallic: 0
-    - _SnowSharpness: 0
+    - _SnowSharpness: 4
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0

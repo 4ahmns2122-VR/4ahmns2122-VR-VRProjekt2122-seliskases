@@ -1,29 +1,28 @@
 Shader "Custom/Snow" {
     Properties {
-        [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _Color ("Color", Color) = (1,1,1,1)
-        [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _Glossiness ("Smoothness", Range(0,1)) = 0.5
-        [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _Metallic ("Metallic", Range(0,1)) = 0.0
-        [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _MainNormal ("MainNormal", 2D) = "bump" {}
-         
         _SnowTexture("Snow Texture", 2D) = "white" {}
         _SnowNormal("Snow Normal", 2D) = "bump" {}
         _SnowColor("Snow Color", color) = (1,1,1,1)
         _SnowGlossiness("Snow Glossiness", Range(0, 1)) = 0.5
-        _SnowDisplacementStrength ("Snow Dislpacement Strength", Range(0, 1)) = 0
-        _SnowSharpness ("Snow Sharpness", Range(0, 4)) = 0
+        _SnowDisplacementStrength ("Snow Dislpacement Strength", Range(0, 1)) = 0 _SnowSharpness ("Snow Sharpness", Range(0, 4)) = 0
         [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _SnowFalloff ("Snow Falloff", Range(0, 1)) = 0.5
         [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _SnowDirection ("Snow Direction", Vector) = (0, 1, 0)
 
-        [HideIfDisabled(NOISEOFFSET_ON)] _OffsetX ("OffsetX",Float) = 0.0
-        [HideIfDisabled(NOISEOFFSET_ON)] _OffsetY ("OffsetY",Float) = 0.0      
-        [HideIfDisabled(NOISEOFFSET_ON)] _Octaves ("Octaves",Int) = 7
-        [HideIfDisabled(NOISEOFFSET_ON)] _Lacunarity("Lacunarity", Range( 1.0 , 5.0)) = 2
-        [HideIfDisabled(NOISEOFFSET_ON)] _Gain("Gain", Range( 0.0 , 1.0)) = 0.5
-        [HideIfDisabled(NOISEOFFSET_ON)] _Value("Value", Range( -2.0 , 2.0)) = 0.0
-        [HideIfDisabled(NOISEOFFSET_ON)] _Amplitude("Amplitude", Range( 0.0 , 5.0)) = 1.5
-        [HideIfDisabled(NOISEOFFSET_ON)] _Frequency("Frequency", Range( 0.0 , 6.0)) = 2.0
-        [HideIfDisabled(NOISEOFFSET_ON)] _Power("Power", Range( 0.1 , 5.0)) = 1.0
+        [Foldout(StartFoldoutGroup, Object, OMNIDIRECTIONALSNOW_OFF)] _Color ("Color", Color) = (1,1,1,1)
+        [Foldout(Object, OMNIDIRECTIONALSNOW_OFF)] _MainTex ("Albedo (RGB)", 2D) = "white" {}
+        [Foldout(Object, OMNIDIRECTIONALSNOW_OFF)] _Glossiness ("Smoothness", Range(0,1)) = 0.5
+        [Foldout(Object, OMNIDIRECTIONALSNOW_OFF)] _Metallic ("Metallic", Range(0,1)) = 0.0
+        [Foldout(Object, OMNIDIRECTIONALSNOW_OFF)] _MainNormal ("MainNormal", 2D) = "bump" {}
+
+        [Foldout(StartFoldoutGroup, Noise, NOISEOFFSET_ON)] _OffsetX ("OffsetX",Float) = 0.0
+        [Foldout(Noise, NOISEOFFSET_ON)] _OffsetY ("OffsetY",Float) = 0.0      
+        [Foldout(Noise, NOISEOFFSET_ON)] _Octaves ("Octaves",Int) = 7
+        [Foldout(Noise, NOISEOFFSET_ON)] _Lacunarity("Lacunarity", Range( 1.0 , 5.0)) = 2
+        [Foldout(Noise, NOISEOFFSET_ON)] _Gain("Gain", Range( 0.0 , 1.0)) = 0.5
+        [Foldout(Noise, NOISEOFFSET_ON)] _Value("Value", Range( -2.0 , 2.0)) = 0.0
+        [Foldout(Noise, NOISEOFFSET_ON)] _Amplitude("Amplitude", Range( 0.0 , 5.0)) = 1.5
+        [Foldout(Noise, NOISEOFFSET_ON)]  _Frequency("Frequency", Range( 0.0 , 6.0)) = 2.0
+        [Foldout(Noise, NOISEOFFSET_ON)] _Power("Power", Range( 0.1 , 5.0)) = 1.0
     }
     SubShader {
         Tags { "RenderType"="Opaque" }
