@@ -3,12 +3,15 @@ Shader "Custom/Snow" {
         [Foldout(StartFoldoutGroup, Snow)] _SnowTexture("Snow Texture", 2D) = "white" {}
         [Foldout(Snow)] _SnowNormal("Snow Normal", 2D) = "bump" {}
         [Foldout(Snow)] _SnowColor("Snow Color", color) = (1,1,1,1)
+        [Foldout(Snow)] _SnowEmission("Snow Emission", color) = (0,0,0,0)
         [Foldout(Snow)] _SnowGlossiness("Snow Glossiness", Range(0, 1)) = 0.5
         [Foldout(Snow)] _SnowDisplacementStrength ("Snow Dislpacement Strength", Float) = 0
         [Foldout(Snow)] _SnowSharpness ("Snow Sharpness", Range(0, 4)) = 0
+        
 
         [Foldout(StartFoldoutGroup, SnowBlending, OMNIDIRECTIONALSNOW_OFF)] _SnowFalloff ("Snow Falloff", Range(0, 1)) = 0.5
         [Foldout(SnowBlending)] _SnowDirection ("Snow Direction", Vector) = (0, 1, 0)
+        [Foldout(SnowBlending)] _SnowOpacity ("Snow Opacity", Range(0, 1)) = 1
 
         [Foldout(StartFoldoutGroup, Object, OMNIDIRECTIONALSNOW_OFF)] _Color ("Color", Color) = (1,1,1,1)
         [Foldout(Object)] _MainTex ("Albedo (RGB)", 2D) = "white" {}
@@ -23,7 +26,7 @@ Shader "Custom/Snow" {
         [Foldout(Noise)] _Gain("Gain", Range( 0.0 , 1.0)) = 0.5
         [Foldout(Noise)] _Value("Value", Range( -2.0 , 2.0)) = 0.0
         [Foldout(Noise)] _Amplitude("Amplitude", Range( 0.0 , 5.0)) = 1.5
-        [Foldout(Noise)]  _Frequency("Frequency", Range( 0.0 , 6.0)) = 2.0
+        [Foldout(Noise)] _Frequency("Frequency", Range( 0.0 , 6.0)) = 2.0
         [Foldout(Noise)] _Power("Power", Range( 0.1 , 5.0)) = 1.0
     }
     SubShader {
@@ -60,11 +63,13 @@ Shader "Custom/Snow" {
         sampler2D _SnowTexture;
         sampler2D _SnowNormal;
         fixed4 _SnowColor;
+        fixed4 _SnowEmission;
         float4 _SnowDirection;
         float _SnowFalloff;
         float _SnowGlossiness;
         float _SnowDisplacementStrength;
         float _SnowSharpness;
+        float _SnowOpacity;
 
         float _Octaves;
         float _Lacunarity;
@@ -141,12 +146,14 @@ Shader "Custom/Snow" {
                 float t = 1;
             #else
                 float t = -exp(snowDot01 * (100 * _SnowFalloff - 100)) * (1 - snowDot01) + 1;
+                t *= _SnowOpacity;
             #endif
  
             o.Normal = lerp(normals, snowNormals, t);
             o.Albedo = lerp(c.rgb, snowColor.rgb, t);
             o.Metallic = lerp(_Metallic, 0, t);
             o.Smoothness = lerp(_Glossiness, _SnowGlossiness, t);
+            o.Emission = lerp(float4(0, 0, 0, 0), _SnowEmission, t);
             o.Alpha = c.a;
         }
 
