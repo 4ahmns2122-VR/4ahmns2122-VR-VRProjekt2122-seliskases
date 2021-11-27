@@ -1,33 +1,29 @@
-// Noise generation by: https://github.com/przemyslawzaworski/Unity3D-CG-programming
-
 Shader "Custom/Snow" {
     Properties {
-        _Color ("Color", Color) = (1,1,1,1)
-        _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _Glossiness ("Smoothness", Range(0,1)) = 0.5
-        _Metallic ("Metallic", Range(0,1)) = 0.0
-        _MainNormal ("MainNormal", 2D) = "bump" {}
+        [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _Color ("Color", Color) = (1,1,1,1)
+        [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _MainTex ("Albedo (RGB)", 2D) = "white" {}
+        [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _Glossiness ("Smoothness", Range(0,1)) = 0.5
+        [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _Metallic ("Metallic", Range(0,1)) = 0.0
+        [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _MainNormal ("MainNormal", 2D) = "bump" {}
          
-        [Header(Snow info)]
         _SnowTexture("Snow Texture", 2D) = "white" {}
         _SnowNormal("Snow Normal", 2D) = "bump" {}
         _SnowColor("Snow Color", color) = (1,1,1,1)
-        _SnowDirection ("Snow Direction", Vector) = (0, 1, 0)
-        _SnowFalloff ("Snow Falloff", Range(0, 1)) = 0.5
         _SnowGlossiness("Snow Glossiness", Range(0, 1)) = 0.5
         _SnowDisplacementStrength ("Snow Dislpacement Strength", Range(0, 1)) = 0
         _SnowSharpness ("Snow Sharpness", Range(0, 4)) = 0
+        [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _SnowFalloff ("Snow Falloff", Range(0, 1)) = 0.5
+        [HideIfDisabled(OMNIDIRECTIONALSNOW_OFF)] _SnowDirection ("Snow Direction", Vector) = (0, 1, 0)
 
-        [Header(Noise Generation)]
-        _OffsetX ("OffsetX",Float) = 0.0
-        _OffsetY ("OffsetY",Float) = 0.0      
-        _Octaves ("Octaves",Int) = 7
-        _Lacunarity("Lacunarity", Range( 1.0 , 5.0)) = 2
-        _Gain("Gain", Range( 0.0 , 1.0)) = 0.5
-        _Value("Value", Range( -2.0 , 2.0)) = 0.0
-        _Amplitude("Amplitude", Range( 0.0 , 5.0)) = 1.5
-        _Frequency("Frequency", Range( 0.0 , 6.0)) = 2.0
-        _Power("Power", Range( 0.1 , 5.0)) = 1.0
+        [HideIfDisabled(NOISEOFFSET_ON)] _OffsetX ("OffsetX",Float) = 0.0
+        [HideIfDisabled(NOISEOFFSET_ON)] _OffsetY ("OffsetY",Float) = 0.0      
+        [HideIfDisabled(NOISEOFFSET_ON)] _Octaves ("Octaves",Int) = 7
+        [HideIfDisabled(NOISEOFFSET_ON)] _Lacunarity("Lacunarity", Range( 1.0 , 5.0)) = 2
+        [HideIfDisabled(NOISEOFFSET_ON)] _Gain("Gain", Range( 0.0 , 1.0)) = 0.5
+        [HideIfDisabled(NOISEOFFSET_ON)] _Value("Value", Range( -2.0 , 2.0)) = 0.0
+        [HideIfDisabled(NOISEOFFSET_ON)] _Amplitude("Amplitude", Range( 0.0 , 5.0)) = 1.5
+        [HideIfDisabled(NOISEOFFSET_ON)] _Frequency("Frequency", Range( 0.0 , 6.0)) = 2.0
+        [HideIfDisabled(NOISEOFFSET_ON)] _Power("Power", Range( 0.1 , 5.0)) = 1.0
     }
     SubShader {
         Tags { "RenderType"="Opaque" }
@@ -80,6 +76,7 @@ Shader "Custom/Snow" {
         float _OffsetY;
         float _Range;
 
+        /* Noise generation by: https://github.com/przemyslawzaworski/Unity3D-CG-programming */
         float SampleNoise (float2 position) {
             position = position * _Frequency + float2(_OffsetX, _OffsetY);
 
