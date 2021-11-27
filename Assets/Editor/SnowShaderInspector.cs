@@ -17,11 +17,13 @@ public class SnowShaderInspector : MaterialEditor
 
         bool footstepsEnabled = keyWords.Contains("FOOTSTEPS_ON");
         bool noiseOffsetEnabled = keyWords.Contains("NOISEOFFSET_ON");
+        bool omnidirectionalSnowEnabled = keyWords.Contains("OMNIDIRECTIONALSNOW_ON");
 
         EditorGUI.BeginChangeCheck();
         
         footstepsEnabled = EditorGUILayout.Toggle("Footsteps", footstepsEnabled);
         noiseOffsetEnabled = EditorGUILayout.Toggle("Noise Offset", noiseOffsetEnabled);
+        omnidirectionalSnowEnabled = EditorGUILayout.Toggle("Omnidirectional Snow", omnidirectionalSnowEnabled);
 
         // Draw the default inspector.
         base.OnInspectorGUI();
@@ -33,6 +35,7 @@ public class SnowShaderInspector : MaterialEditor
 
             keywords.Add (footstepsEnabled ? "FOOTSTEPS_ON" : "FOOTSTEPS_OFF");
             keywords.Add (noiseOffsetEnabled ? "NOISEOFFSET_ON" : "NOISEOFFSET_OFF");
+            keywords.Add (omnidirectionalSnowEnabled ? "OMNIDIRECTIONALSNOW_ON" : "OMNIDIRECTIONALSNOW_OFF");
 
             targetMat.shaderKeywords = keywords.ToArray();
             EditorUtility.SetDirty(targetMat);

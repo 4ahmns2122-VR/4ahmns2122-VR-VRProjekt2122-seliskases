@@ -40,6 +40,7 @@ Shader "Custom/Snow" {
 
         #pragma multi_compile FOOTSTEPS_ON FOOTSTEPS_OFF
         #pragma multi_compile NOISEOFFSET_ON NOISEOFFSET_OFF
+        #pragma multi_compile OMNIDIRECTIONALSNOW_ON OMNIDIRECTIONALSNOW_OFF
  
         sampler2D _MainTex;
  
@@ -113,14 +114,19 @@ Shader "Custom/Snow" {
 
             float3 worldNormals = mul((float3x3)unity_ObjectToWorld, data.normal.xyz);
             half displacementMask = dot(worldNormals, normalize(_SnowDirection));
-            half displacementMask01 = clamp(displacementMask, 0, 1);
-
             float3 displacementDir = normalize(data.normal.xyz + _SnowDirection.xyz * _SnowSharpness);
+
+            #if OMNIDIRECTIONALSNOW_ON
+                half displacementMask01 = 1;
+            #else
+                half displacementMask01 = clamp(displacementMask, 0, 1);
+            #endif
+
             data.vertex.xyz += displacementMask01 * _SnowDisplacementStrength * displacementDir;
 
             #if NOISEOFFSET_ON
-            float noise = SampleNoise(displacementDir.xz);
-            data.vertex.xyz += displacementMask01 * noise * displacementDir;
+                float noise = SampleNoise(displacementDir.xz);
+                data.vertex.xyz += displacementMask01 * noise * displacementDir;
             #endif
         }
  
@@ -132,7 +138,12 @@ Shader "Custom/Snow" {
             float3 snowNormals = UnpackNormal(tex2D(_SnowNormal, IN.uv_SnowNormal));
             half snowDot = dot(WorldNormalVector(IN, normals), normalize(_SnowDirection));
             half snowDot01 = clamp(snowDot, 0, 1);
-            float t = -exp(snowDot01 * (100 * _SnowFalloff - 100)) * (1 - snowDot01) + 1;
+
+            #if OMNIDIRECTIONALSNOW_ON
+                float t = 1;
+            #else
+                float t = -exp(snowDot01 * (100 * _SnowFalloff - 100)) * (1 - snowDot01) + 1;
+            #endif
  
             o.Normal = lerp(normals, snowNormals, t);
             o.Albedo = lerp(c.rgb, snowColor.rgb, t);
