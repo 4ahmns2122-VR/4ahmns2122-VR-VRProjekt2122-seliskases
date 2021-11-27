@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: SnowTest
   m_Shader: {fileID: 4800000, guid: 61849807eb1c440368fe7a4026b37ecc, type: 3}
-  m_ShaderKeywords: FULLFORWARDSHADOWS_OFF
+  m_ShaderKeywords: FOOTSTEPS_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -74,7 +74,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 1
+    - _Glossiness: 0
     - _GlossyReflections: 1
     - _LightingModell: 0
     - _Metallic: 0
@@ -95,6 +95,6 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 0.827451, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SnowColor: {r: 0.9009434, g: 0.98082775, b: 1, a: 1}
+    - _SnowColor: {r: 0.7709594, g: 0.9466446, b: 0.990566, a: 1}
     - _SnowDirection: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []

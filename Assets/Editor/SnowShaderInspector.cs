@@ -16,12 +16,12 @@ public class SnowShaderInspector : MaterialEditor
         string[] keyWords = targetMat.shaderKeywords;
 
         // Check to see if the keyword NORMALMAP_ON is set in the material.
-        bool fullForwardShadowsEnabled = keyWords.Contains("FULLFORWARDSHADOWS_ON");
+        bool footstepsEnabled = keyWords.Contains("FOOTSTEPS_ON");
 
         EditorGUI.BeginChangeCheck();
         
-        // Draw a checkbox showing the status of normalEnabled
-        fullForwardShadowsEnabled = EditorGUILayout.Toggle("Full Forward Shadows", fullForwardShadowsEnabled);
+        // Draw a checkbox showing the status of footstepsEnabled
+        footstepsEnabled = EditorGUILayout.Toggle("Footsteps", footstepsEnabled);
 
         // Draw the default inspector.
         base.OnInspectorGUI();
@@ -30,7 +30,7 @@ public class SnowShaderInspector : MaterialEditor
         if (EditorGUI.EndChangeCheck())
         {
             // If our normal is enabled, add keyword NORMALMAP_ON, otherwise add NORMALMAP_OFF
-            List<string> keywords = new List<string> { fullForwardShadowsEnabled ? "FULLFORWARDSHADOWS_ON" : "FULLFORWARDSHADOWS_OFF" };
+            List<string> keywords = new List<string> { footstepsEnabled ? "FOOTSTEPS_ON" : "FOOTSTEPS_OFF" };
             targetMat.shaderKeywords = keywords.ToArray();
             EditorUtility.SetDirty(targetMat);
         }

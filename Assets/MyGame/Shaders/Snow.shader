@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 Shader "Custom/Snow" {
     Properties {
         _Color ("Color", Color) = (1,1,1,1)
@@ -13,7 +15,6 @@ Shader "Custom/Snow" {
         _SnowDirection ("Snow Direction", Vector) = (0, 1, 0)
         _SnowFalloff ("Snow Falloff", Range(0, 1)) = 0.5
         _SnowGlossiness("Snow Glossiness", Range(0, 1)) = 0.5
-        _SnowMetallic ("Snow Metallic", Range(0,1)) = 0.0
         _SnowDisplacementStrength ("Snow Dislpacement Strength", Range(0, 1)) = 0
         _SnowSharpness ("Snow Sharpness", Range(0, 4)) = 0
     }
@@ -24,9 +25,9 @@ Shader "Custom/Snow" {
         CGPROGRAM
 
         #pragma target 3.0
-        #pragma surface surf Standard fullforwardshadows vertex:vert
+        #pragma surface surf Standard addshadow vertex:vert
 
-        #pragma multi_compile FULLFORWARDSHADOWS_ON FULLFORWARDSHADOWS_OFF
+        #pragma multi_compile FOOTSTEPS_ON FOOTSTEPS_OFF
  
         sampler2D _MainTex;
  
@@ -35,7 +36,7 @@ Shader "Custom/Snow" {
             float2 uv_MainNormal;
             float2 uv_SnowNormal;
             float2 uv_SnowTexture;
-            float3 worldNormal;
+            float3 worldNormal;         
             INTERNAL_DATA
         };
  
@@ -50,15 +51,16 @@ Shader "Custom/Snow" {
         float4 _SnowDirection;
         float _SnowFalloff;
         float _SnowGlossiness;
-        float _SnowMetallic;
         float _SnowDisplacementStrength;
         float _SnowSharpness;
 
         void vert(inout appdata_full data, out Input IN) {
             UNITY_INITIALIZE_OUTPUT(Input, IN);
 
-            half displacementMask = dot(data.normal.xyz, normalize(_SnowDirection));
-            half3 displacementMask01 = clamp(displacementMask, 0, 1);
+            float3 normals = mul((float3x3)unity_ObjectToWorld, data.normal.xyz);
+
+            half displacementMask = dot(normals, normalize(_SnowDirection));
+            half displacementMask01 = clamp(displacementMask, 0, 1);
 
             float3 displacementDir = normalize(data.normal.xyz + _SnowDirection.xyz * _SnowSharpness);
             data.vertex.xyz += displacementMask01 * _SnowDisplacementStrength * displacementDir;
@@ -71,12 +73,12 @@ Shader "Custom/Snow" {
             fixed4 snowColor = tex2D(_SnowTexture, IN.uv_SnowTexture) * _SnowColor;
             float3 snowNormals = UnpackNormal(tex2D(_SnowNormal, IN.uv_SnowNormal));
             half snowDot = dot(WorldNormalVector(IN, normals), normalize(_SnowDirection));
-            half3 snowDot01 = clamp(snowDot, 0, 1);
+            half snowDot01 = clamp(snowDot, 0, 1);
             float t = -exp(snowDot01 * (100 * _SnowFalloff - 100)) * (1 - snowDot01) + 1;
  
             o.Normal = lerp(normals, snowNormals, t);
             o.Albedo = lerp(c.rgb, snowColor.rgb, t);
-            o.Metallic = lerp(_Metallic, _SnowMetallic, t);
+            o.Metallic = lerp(_Metallic, 0, t);
             o.Smoothness = lerp(_Glossiness, _SnowGlossiness, t);
             o.Alpha = c.a;
         }
