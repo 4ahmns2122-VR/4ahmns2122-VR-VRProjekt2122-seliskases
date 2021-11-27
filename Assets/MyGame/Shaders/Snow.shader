@@ -4,10 +4,11 @@ Shader "Custom/Snow" {
         [Foldout(Snow)] _SnowNormal("Snow Normal", 2D) = "bump" {}
         [Foldout(Snow)] _SnowColor("Snow Color", color) = (1,1,1,1)
         [Foldout(Snow)] _SnowGlossiness("Snow Glossiness", Range(0, 1)) = 0.5
-        [Foldout(Snow)] _SnowDisplacementStrength ("Snow Dislpacement Strength", Range(0, 1)) = 0
+        [Foldout(Snow)] _SnowDisplacementStrength ("Snow Dislpacement Strength", Float) = 0
         [Foldout(Snow)] _SnowSharpness ("Snow Sharpness", Range(0, 4)) = 0
-        [Foldout(Snow)] _SnowFalloff ("Snow Falloff", Range(0, 1)) = 0.5
-        [Foldout(Snow)] _SnowDirection ("Snow Direction", Vector) = (0, 1, 0)
+
+        [Foldout(StartFoldoutGroup, SnowBlending, OMNIDIRECTIONALSNOW_OFF)] _SnowFalloff ("Snow Falloff", Range(0, 1)) = 0.5
+        [Foldout(SnowBlending)] _SnowDirection ("Snow Direction", Vector) = (0, 1, 0)
 
         [Foldout(StartFoldoutGroup, Object, OMNIDIRECTIONALSNOW_OFF)] _Color ("Color", Color) = (1,1,1,1)
         [Foldout(Object)] _MainTex ("Albedo (RGB)", 2D) = "white" {}
