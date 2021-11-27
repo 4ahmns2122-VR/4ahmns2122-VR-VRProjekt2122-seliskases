@@ -63,11 +63,7 @@ public class FoldoutDrawer : MaterialPropertyDrawer
 
     public override float GetPropertyHeight(MaterialProperty prop, string label, MaterialEditor editor)
     {
-        //@TODO: manually standardise element compaction
-        //     float height = base.GetPropertyHeight (prop, label, editor);
-        //     return bElementHidden ? 0.0f : height-16;
-
-        return 0;
+        return -EditorGUIUtility.standardVerticalSpacing;
     }
 }
 
