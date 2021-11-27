@@ -7,26 +7,33 @@ using UnityEditor;
 public class FoldoutDrawer : MaterialPropertyDrawer
 {
     public string argHeader;
-    public string argCondition;
     public bool argStartFoldoutGroup = false;
     public bool bElementDrawout;
-    public static bool isFoldedOut = true;
+
+    public static Dictionary<string, bool> isFoldedOut = new Dictionary<string, bool>();
+    public static Dictionary<string, string> argCondition = new Dictionary<string, string>();
 
     public FoldoutDrawer(string startFoldoutGroup, string header, string condition)
     {
         argHeader = header;
-        argCondition = condition;
+        argCondition.Add(header, condition);
 
         if(startFoldoutGroup == "StartFoldoutGroup")
-        {
             argStartFoldoutGroup = true;
-        }
     }
 
-    public FoldoutDrawer(string header, string condition)
+    public FoldoutDrawer(string startFoldoutGroup, string header)
     {
         argHeader = header;
-        argCondition = condition;
+        argCondition.Add(header, "");
+
+        if (startFoldoutGroup == "StartFoldoutGroup")
+            argStartFoldoutGroup = true;
+    }
+
+    public FoldoutDrawer(string header)
+    {
+        argHeader = header;
     }
 
     public override void OnGUI(Rect position, MaterialProperty prop, string label, MaterialEditor editor)
@@ -35,18 +42,21 @@ public class FoldoutDrawer : MaterialPropertyDrawer
         for (int i = 0; i < editor.targets.Length; i++)
         {
             Material mat = editor.targets[i] as Material;
-            if (mat != null)
+            if (mat != null && argCondition[argHeader] != "")
             {
-                bElementDrawout = mat.IsKeywordEnabled(argCondition);
+                bElementDrawout = mat.IsKeywordEnabled(argCondition[argHeader]);
             }
         }
 
         if (bElementDrawout)
         {
-            if (argStartFoldoutGroup)
-                isFoldedOut = EditorGUILayout.Foldout(isFoldedOut, argHeader);
+            if (!isFoldedOut.ContainsKey(argHeader))
+                isFoldedOut.Add(argHeader, false);
 
-            if (isFoldedOut)
+            if (argStartFoldoutGroup)
+                isFoldedOut[argHeader] = EditorGUILayout.Foldout(isFoldedOut[argHeader], argHeader);
+
+            if (isFoldedOut[argHeader])
                 editor.DefaultShaderProperty(prop, label);
         }
     }
