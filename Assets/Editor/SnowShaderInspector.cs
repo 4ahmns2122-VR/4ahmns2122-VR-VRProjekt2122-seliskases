@@ -15,13 +15,13 @@ public class SnowShaderInspector : MaterialEditor
         Material targetMat = target as Material;
         string[] keyWords = targetMat.shaderKeywords;
 
-        // Check to see if the keyword NORMALMAP_ON is set in the material.
         bool footstepsEnabled = keyWords.Contains("FOOTSTEPS_ON");
+        bool noiseOffsetEnabled = keyWords.Contains("NOISEOFFSET_ON");
 
         EditorGUI.BeginChangeCheck();
         
-        // Draw a checkbox showing the status of footstepsEnabled
         footstepsEnabled = EditorGUILayout.Toggle("Footsteps", footstepsEnabled);
+        noiseOffsetEnabled = EditorGUILayout.Toggle("Noise Offset", noiseOffsetEnabled);
 
         // Draw the default inspector.
         base.OnInspectorGUI();
@@ -29,8 +29,11 @@ public class SnowShaderInspector : MaterialEditor
         // If something has changed, update the material.
         if (EditorGUI.EndChangeCheck())
         {
-            // If our normal is enabled, add keyword NORMALMAP_ON, otherwise add NORMALMAP_OFF
-            List<string> keywords = new List<string> { footstepsEnabled ? "FOOTSTEPS_ON" : "FOOTSTEPS_OFF" };
+            List<string> keywords = new List<string>();
+
+            keywords.Add (footstepsEnabled ? "FOOTSTEPS_ON" : "FOOTSTEPS_OFF");
+            keywords.Add (noiseOffsetEnabled ? "NOISEOFFSET_ON" : "NOISEOFFSET_OFF");
+
             targetMat.shaderKeywords = keywords.ToArray();
             EditorUtility.SetDirty(targetMat);
         }
