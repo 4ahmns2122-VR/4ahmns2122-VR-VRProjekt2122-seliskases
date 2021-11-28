@@ -14,7 +14,7 @@ public class FoldoutDrawer : MaterialPropertyDrawer
     public static Dictionary<string, string> argCondition = new Dictionary<string, string>();
 
     public FoldoutDrawer(string startFoldoutGroup, string header, string condition)
-    {
+    { 
         argHeader = header;
         argCondition.Add(header, condition);
 

@@ -1,13 +1,14 @@
 Shader "Custom/Snow" {
     Properties {
         [Foldout(StartFoldoutGroup, Snow)] _SnowTexture("Snow Texture", 2D) = "white" {}
-        [Foldout(Snow)] _SnowNormal("Snow Normal", 2D) = "bump" {}
+        [Foldout(Snow)] [NoScaleOffset] _SnowNormal("Snow Normal", 2D) = "bump" {}
+        [Foldout(Snow)] _SnowNormalStrength("Snow Normal Strength", Range(0, 1)) = 1
+        [Foldout(Snow)] [NoScaleOffset] _SnowGlossinessTexture ("Snow Glossiness", 2D) = "black" {}
+        [Foldout(Snow)] _SnowGlossiness("Snow Glossiness", Range(0, 1)) = 0.5
         [Foldout(Snow)] _SnowColor("Snow Color", color) = (1,1,1,1)
         [Foldout(Snow)] _SnowEmission("Snow Emission", color) = (0,0,0,0)
-        [Foldout(Snow)] _SnowGlossiness("Snow Glossiness", Range(0, 1)) = 0.5
         [Foldout(Snow)] _SnowDisplacementStrength ("Snow Dislpacement Strength", Float) = 0
         [Foldout(Snow)] _SnowSharpness ("Snow Sharpness", Range(0, 4)) = 0
-        
 
         [Foldout(StartFoldoutGroup, SnowBlending, OMNIDIRECTIONALSNOW_OFF)] _SnowFalloff ("Snow Falloff", Range(0, 1)) = 0.5
         [Foldout(SnowBlending)] _SnowDirection ("Snow Direction", Vector) = (0, 1, 0)
@@ -15,9 +16,11 @@ Shader "Custom/Snow" {
 
         [Foldout(StartFoldoutGroup, Object, OMNIDIRECTIONALSNOW_OFF)] _Color ("Color", Color) = (1,1,1,1)
         [Foldout(Object)] _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        [Foldout(Object)] _Glossiness ("Smoothness", Range(0,1)) = 0.5
+        [Foldout(Object)] [NoScaleOffset] _GlossinessTexture("Glossiness", 2D) = "black"
+        [Foldout(Object)] _Glossiness ("Glossiness", Range(0,1)) = 0.5
         [Foldout(Object)] _Metallic ("Metallic", Range(0,1)) = 0.0
-        [Foldout(Object)] _MainNormal ("MainNormal", 2D) = "bump" {}
+        [Foldout(Object)] [NoScaleOffset] _MainNormal ("MainNormal", 2D) = "bump" {}
+        [Foldout(Object)] [NoScaleOffset] _NormalStrength("Normal Strength", Range(0, 1)) = 1
 
         [Foldout(StartFoldoutGroup, Noise, NOISEOFFSET_ON)] _OffsetX ("OffsetX",Float) = 0.0
         [Foldout(Noise)] _OffsetY ("OffsetY",Float) = 0.0      
@@ -28,12 +31,17 @@ Shader "Custom/Snow" {
         [Foldout(Noise)] _Amplitude("Amplitude", Range( 0.0 , 5.0)) = 1.5
         [Foldout(Noise)] _Frequency("Frequency", Range( 0.0 , 6.0)) = 2.0
         [Foldout(Noise)] _Power("Power", Range( 0.1 , 5.0)) = 1.0
+
+        [Foldout(StartFoldoutGroup, Footsteps, FOOTSTEPS_ON)] _FootstepTexture("Footstep Texture", 2D) = "white" {}
+        [Foldout(Footsteps)] _FootstepDisplacementStrength("Footstep DisplacementStrength", Float) = 1
     }
     SubShader {
         Tags { "RenderType"="Opaque" }
         LOD 200
          
         CGPROGRAM
+// Upgrade NOTE: excluded shader from DX11, OpenGL ES 2.0 because it uses unsized arrays
+#pragma exclude_renderers d3d11 gles
 
         #pragma target 3.0
         #pragma surface surf Standard addshadow vertex:vert
@@ -49,19 +57,22 @@ Shader "Custom/Snow" {
             float2 uv_MainNormal;
             float2 uv_SnowNormal;
             float2 uv_SnowTexture;
-            float3 worldNormal;
-
-            float3 test;        
+            float2 uv_FootstepTexture;
+            float3 worldNormal;      
             INTERNAL_DATA
         };
- 
+
+        sampler2D _GlossinessTexture;
         half _Glossiness;
         half _Metallic;
         fixed4 _Color;
         sampler2D _MainNormal;
+        float _NormalStrength;
  
         sampler2D _SnowTexture;
         sampler2D _SnowNormal;
+        sampler2D _SnowGlossinessTexture;
+        float _SnowNormalStrength;
         fixed4 _SnowColor;
         fixed4 _SnowEmission;
         float4 _SnowDirection;
@@ -81,6 +92,10 @@ Shader "Custom/Snow" {
         float _OffsetX;
         float _OffsetY;
         float _Range;
+
+        sampler2D _FootstepTexture;
+        float _FootstepDisplacementStrength;
+        float4 _Footsteps[1];
 
         /* Noise generation by: https://github.com/przemyslawzaworski/Unity3D-CG-programming */
         float SampleNoise (float2 position) {
@@ -135,12 +150,15 @@ Shader "Custom/Snow" {
  
         void surf (Input IN, inout SurfaceOutputStandard o) {
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            float3 normals = UnpackNormal (tex2D(_MainNormal, IN.uv_MainNormal));
+            float3 normals = UnpackNormal (tex2D(_MainNormal, IN.uv_MainNormal)) * _NormalStrength;
 
             fixed4 snowColor = tex2D(_SnowTexture, IN.uv_SnowTexture) * _SnowColor;
-            float3 snowNormals = UnpackNormal(tex2D(_SnowNormal, IN.uv_SnowNormal));
+            float3 snowNormals = UnpackNormal(tex2D(_SnowNormal, IN.uv_SnowNormal)) * _SnowNormalStrength;
             half snowDot = dot(WorldNormalVector(IN, normals), normalize(_SnowDirection));
             half snowDot01 = clamp(snowDot, 0, 1);
+
+            fixed4 glossiness = tex2D (_GlossinessTexture, IN.uv_MainTex) + _Glossiness;
+            fixed4 snowGlossiness = tex2D (_SnowGlossinessTexture, IN.uv_MainTex) + _SnowGlossiness;
 
             #if OMNIDIRECTIONALSNOW_ON
                 float t = 1;
@@ -148,12 +166,19 @@ Shader "Custom/Snow" {
                 float t = -exp(snowDot01 * (100 * _SnowFalloff - 100)) * (1 - snowDot01) + 1;
                 t *= _SnowOpacity;
             #endif
+
+            #if FOOTSTEPS_ON
+                for(int i = 0; i < _Footsteps.Length; i++) {
+                    fixed3 footstepCol = tex2D(_FootstepTexture, IN.uv_FootstepTexture * 5 + _Footsteps[i].xy);
+                    snowColor.rgb += footstepCol;
+                }
+            #endif
  
             o.Normal = lerp(normals, snowNormals, t);
             o.Albedo = lerp(c.rgb, snowColor.rgb, t);
             o.Metallic = lerp(_Metallic, 0, t);
-            o.Smoothness = lerp(_Glossiness, _SnowGlossiness, t);
-            o.Emission = lerp(float4(0, 0, 0, 0), _SnowEmission, t);
+            o.Smoothness = lerp(glossiness, snowGlossiness, t);
+            o.Emission = lerp(float3(0, 0, 0), _SnowEmission, t);
             o.Alpha = c.a;
         }
 
