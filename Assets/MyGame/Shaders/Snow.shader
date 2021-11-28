@@ -4,7 +4,7 @@ Shader "Custom/Snow" {
         [Foldout(Snow)] [NoScaleOffset] _SnowNormal("Snow Normal", 2D) = "bump" {}
         [Foldout(Snow)] _SnowNormalStrength("Snow Normal Strength", Range(0.1, 1)) = 1
         [Foldout(Snow)] [NoScaleOffset] _SnowGlossinessTexture ("Snow Glossiness", 2D) = "black" {}
-        [Foldout(Snow)] _SnowGlossiness("Snow Glossiness", Range(0, 1)) = 0.5
+        [FoldoutIfTextureNotSet(_SnowGlossinessTexture, Snow)] _SnowGlossiness("Snow Glossiness", Range(0, 1)) = 0.5
         [Foldout(Snow)] _SnowColor("Snow Color", color) = (1,1,1,1)
         [Foldout(Snow)] _SnowEmission("Snow Emission", color) = (0,0,0,0)
         [Foldout(Snow)] _SnowDisplacementStrength ("Snow Dislpacement Strength", Float) = 0
@@ -17,7 +17,7 @@ Shader "Custom/Snow" {
         [Foldout(StartFoldoutGroup, Object, OMNIDIRECTIONALSNOW_OFF)] _Color ("Color", Color) = (1,1,1,1)
         [Foldout(Object)] _MainTex ("Albedo (RGB)", 2D) = "white" {}
         [Foldout(Object)] [NoScaleOffset] _GlossinessTexture("Glossiness", 2D) = "black" {}
-        [Foldout(Object)] _Glossiness ("Glossiness", Range(0, 1)) = 0.5
+        [FoldoutIfTextureNotSet(_GlossinessTexture, Object)]  _Glossiness ("Glossiness", Range(0, 1)) = 0.5
         [Foldout(Object)] _Metallic ("Metallic", Range(0, 1)) = 0.0
         [Foldout(Object)] [NoScaleOffset] _MainNormal ("MainNormal", 2D) = "bump" {}
         [Foldout(Object)] [NoScaleOffset] _NormalStrength("Normal Strength", Range(0.1, 1)) = 1

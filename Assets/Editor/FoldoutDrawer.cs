@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
+ 
 public class FoldoutDrawer : MaterialPropertyDrawer
 {
     public string argHeader;
     public bool argStartFoldoutGroup = false;
     public bool bElementDrawout;
-
+    
     public static Dictionary<string, bool> isFoldedOut = new Dictionary<string, bool>();
     public static Dictionary<string, string> argCondition = new Dictionary<string, string>();
 
@@ -30,7 +30,7 @@ public class FoldoutDrawer : MaterialPropertyDrawer
         if (startFoldoutGroup == "StartFoldoutGroup")
             argStartFoldoutGroup = true;
     }
-
+    
     public FoldoutDrawer(string header)
     {
         argHeader = header;
@@ -46,18 +46,18 @@ public class FoldoutDrawer : MaterialPropertyDrawer
             {
                 bElementDrawout = mat.IsKeywordEnabled(argCondition[argHeader]);
             }
-        }
 
-        if (bElementDrawout)
-        {
-            if (!isFoldedOut.ContainsKey(argHeader))
-                isFoldedOut.Add(argHeader, false);
+            if (bElementDrawout)
+            {
+                if (!isFoldedOut.ContainsKey(argHeader))
+                    isFoldedOut.Add(argHeader, false);
 
-            if (argStartFoldoutGroup)
-                isFoldedOut[argHeader] = EditorGUILayout.Foldout(isFoldedOut[argHeader], argHeader);
+                if (argStartFoldoutGroup)
+                    isFoldedOut[argHeader] = EditorGUILayout.Foldout(isFoldedOut[argHeader], argHeader);
 
-            if (isFoldedOut[argHeader])
-                editor.DefaultShaderProperty(prop, label);
+                if (isFoldedOut[argHeader])
+                    editor.DefaultShaderProperty(prop, label);
+            }
         }
     }
 

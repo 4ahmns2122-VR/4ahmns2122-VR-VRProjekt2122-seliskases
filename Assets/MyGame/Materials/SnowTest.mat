@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: SnowTest
   m_Shader: {fileID: 4800000, guid: 61849807eb1c440368fe7a4026b37ecc, type: 3}
-  m_ShaderKeywords: FOOTSTEPS_OFF NOISEOFFSET_OFF OMNIDIRECTIONALSNOW_ON
+  m_ShaderKeywords: FOOTSTEPS_OFF NOISEOFFSET_OFF OMNIDIRECTIONALSNOW_OFF
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
