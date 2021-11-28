@@ -2,7 +2,7 @@ Shader "Custom/Snow" {
     Properties {
         [Foldout(StartFoldoutGroup, Snow)] _SnowTexture("Snow Texture", 2D) = "white" {}
         [Foldout(Snow)] [NoScaleOffset] _SnowNormal("Snow Normal", 2D) = "bump" {}
-        [Foldout(Snow)] _SnowNormalStrength("Snow Normal Strength", Range(0, 1)) = 1
+        [Foldout(Snow)] _SnowNormalStrength("Snow Normal Strength", Range(0.1, 1)) = 1
         [Foldout(Snow)] [NoScaleOffset] _SnowGlossinessTexture ("Snow Glossiness", 2D) = "black" {}
         [Foldout(Snow)] _SnowGlossiness("Snow Glossiness", Range(0, 1)) = 0.5
         [Foldout(Snow)] _SnowColor("Snow Color", color) = (1,1,1,1)
@@ -16,11 +16,11 @@ Shader "Custom/Snow" {
 
         [Foldout(StartFoldoutGroup, Object, OMNIDIRECTIONALSNOW_OFF)] _Color ("Color", Color) = (1,1,1,1)
         [Foldout(Object)] _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        [Foldout(Object)] [NoScaleOffset] _GlossinessTexture("Glossiness", 2D) = "black"
-        [Foldout(Object)] _Glossiness ("Glossiness", Range(0,1)) = 0.5
-        [Foldout(Object)] _Metallic ("Metallic", Range(0,1)) = 0.0
+        [Foldout(Object)] [NoScaleOffset] _GlossinessTexture("Glossiness", 2D) = "black" {}
+        [Foldout(Object)] _Glossiness ("Glossiness", Range(0, 1)) = 0.5
+        [Foldout(Object)] _Metallic ("Metallic", Range(0, 1)) = 0.0
         [Foldout(Object)] [NoScaleOffset] _MainNormal ("MainNormal", 2D) = "bump" {}
-        [Foldout(Object)] [NoScaleOffset] _NormalStrength("Normal Strength", Range(0, 1)) = 1
+        [Foldout(Object)] [NoScaleOffset] _NormalStrength("Normal Strength", Range(0.1, 1)) = 1
 
         [Foldout(StartFoldoutGroup, Noise, NOISEOFFSET_ON)] _OffsetX ("OffsetX",Float) = 0.0
         [Foldout(Noise)] _OffsetY ("OffsetY",Float) = 0.0      
@@ -129,14 +129,13 @@ Shader "Custom/Snow" {
 
         void vert(inout appdata_full data, out Input IN) {
             UNITY_INITIALIZE_OUTPUT(Input, IN);
-
-            float3 worldNormals = mul((float3x3)unity_ObjectToWorld, data.normal.xyz);
-            half displacementMask = dot(worldNormals, normalize(_SnowDirection));
             float3 displacementDir = normalize(data.normal.xyz + _SnowDirection.xyz * _SnowSharpness);
 
             #if OMNIDIRECTIONALSNOW_ON
                 half displacementMask01 = 1;
             #else
+                float3 worldNormals = mul((float3x3)unity_ObjectToWorld, data.normal.xyz);
+                half displacementMask = dot(worldNormals, normalize(_SnowDirection));
                 half displacementMask01 = clamp(displacementMask, 0, 1);
             #endif
 
@@ -149,13 +148,11 @@ Shader "Custom/Snow" {
         }
  
         void surf (Input IN, inout SurfaceOutputStandard o) {
-            fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+            fixed4 color = tex2D (_MainTex, IN.uv_MainTex) * _Color;
             float3 normals = UnpackNormal (tex2D(_MainNormal, IN.uv_MainNormal)) * _NormalStrength;
 
             fixed4 snowColor = tex2D(_SnowTexture, IN.uv_SnowTexture) * _SnowColor;
             float3 snowNormals = UnpackNormal(tex2D(_SnowNormal, IN.uv_SnowNormal)) * _SnowNormalStrength;
-            half snowDot = dot(WorldNormalVector(IN, normals), normalize(_SnowDirection));
-            half snowDot01 = clamp(snowDot, 0, 1);
 
             fixed4 glossiness = tex2D (_GlossinessTexture, IN.uv_MainTex) + _Glossiness;
             fixed4 snowGlossiness = tex2D (_SnowGlossinessTexture, IN.uv_MainTex) + _SnowGlossiness;
@@ -163,6 +160,9 @@ Shader "Custom/Snow" {
             #if OMNIDIRECTIONALSNOW_ON
                 float t = 1;
             #else
+                half snowDot = dot(WorldNormalVector(IN, normals), normalize(_SnowDirection));
+                half snowDot01 = clamp(snowDot, 0, 1);
+
                 float t = -exp(snowDot01 * (100 * _SnowFalloff - 100)) * (1 - snowDot01) + 1;
                 t *= _SnowOpacity;
             #endif
@@ -175,11 +175,11 @@ Shader "Custom/Snow" {
             #endif
  
             o.Normal = lerp(normals, snowNormals, t);
-            o.Albedo = lerp(c.rgb, snowColor.rgb, t);
+            o.Albedo = lerp(color.rgb, snowColor.rgb, t);
             o.Metallic = lerp(_Metallic, 0, t);
             o.Smoothness = lerp(glossiness, snowGlossiness, t);
             o.Emission = lerp(float3(0, 0, 0), _SnowEmission, t);
-            o.Alpha = c.a;
+            o.Alpha = color.a;
         }
 
         ENDCG
