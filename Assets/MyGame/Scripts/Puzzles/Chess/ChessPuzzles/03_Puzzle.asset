@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d859b207bba54eff9c28d30c90098e4, type: 3}
+  m_Name: 03_Puzzle
+  m_EditorClassIdentifier: 
+  fen: 6k/pp4p/2pR/6p/5r/P2BR/5BK/2q
+  moves:
+  - startSquare: d6
+    targetSquare: d8
+  - startSquare: g8
+    targetSquare: f7
+  - startSquare: d8
+    targetSquare: d7
+  - startSquare: f7
+    targetSquare: g8
+  - startSquare: d3
+    targetSquare: g6
+  - startSquare: f4
+    targetSquare: f8
+  - startSquare: e3
+    targetSquare: h3
+  - startSquare: g5
+    targetSquare: g4
+  - startSquare: g6
+    targetSquare: h7
+  - startSquare: g8
+    targetSquare: h8
+  - startSquare: h3
+    targetSquare: h5
+  - startSquare: c1
+    targetSquare: a3
+  - startSquare: h7
+    targetSquare: f5
+  - startSquare: h8
+    targetSquare: g8
+  - startSquare: f5
+    targetSquare: e6
+  - startSquare: f8
+    targetSquare: f7
+  - startSquare: e6
+    targetSquare: f7
+  - startSquare: g8
+    targetSquare: f8
+  - startSquare: h5
+    targetSquare: h8
+  playerIsWhite: 1
+  difficulty: 2

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d859b207bba54eff9c28d30c90098e4, type: 3}
+  m_Name: 01_Puzzle
+  m_EditorClassIdentifier: 
+  fen: N1n3/1Q2P3/P1B5/KP3P1P/7q1Q2P3/P1B5/KP3P1P/7q
+  difficulty: 0
+  playerIsWhite: 1
+  moves:
+  - startSquare: c5
+    targetSquare: a6
+  - startSquare: b8
+    targetSquare: b7
+  - startSquare: b5
+    targetSquare: d7
+  - startSquare: b7
+    targetSquare: a6
+  - startSquare: b4
+    targetSquare: b5
