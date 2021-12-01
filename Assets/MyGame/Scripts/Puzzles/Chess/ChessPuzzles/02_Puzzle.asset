@@ -9,20 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d859b207bba54eff9c28d30c90098e4, type: 3}
+  m_Script: {fileID: 11500000, guid: cf1a4df501c7f4687bd6fc642939fea4, type: 3}
   m_Name: 02_Puzzle
   m_EditorClassIdentifier: 
-  fen: R6R/1r3pp1/4p1kp/3pP3/1r2qPP1/7P/1P1Q3K/8
-  moves:
-  - startSquare: f4
-    targetSquare: f5
-  - startSquare: e6
-    targetSquare: f5
-  - startSquare: d2
-    targetSquare: h6
-  - startSquare: g7
-    targetSquare: h6
-  - startSquare: a8
-    targetSquare: g8
+  fen: rnb2rk/p4p1p/1p4p/q4N/1QP/8/PP3PPP/R2R2K
+  difficulty: 0
   playerIsWhite: 1
-  difficulty: 1
+  moves:
+  - startSquare: b4
+    targetSquare: f8
+  - startSquare: g8
+    targetSquare: f8
+  - startSquare: d1
+    targetSquare: d8

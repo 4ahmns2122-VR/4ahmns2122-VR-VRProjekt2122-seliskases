@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d859b207bba54eff9c28d30c90098e4, type: 3}
+  m_Script: {fileID: 11500000, guid: cf1a4df501c7f4687bd6fc642939fea4, type: 3}
   m_Name: 01_Puzzle
   m_EditorClassIdentifier: 
   fen: N1n3/1Q2P3/P1B5/KP3P1P/7q1Q2P3/P1B5/KP3P1P/7q
