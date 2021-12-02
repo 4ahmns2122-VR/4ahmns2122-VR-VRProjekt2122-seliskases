@@ -31,9 +31,6 @@ Shader "Custom/Snow" {
         [Foldout(Noise)] _Amplitude("Amplitude", Range( 0.0 , 5.0)) = 1.5
         [Foldout(Noise)] _Frequency("Frequency", Range( 0.0 , 6.0)) = 2.0
         [Foldout(Noise)] _Power("Power", Range( 0.1 , 5.0)) = 1.0
-
-        [Foldout(StartFoldoutGroup, Footsteps, FOOTSTEPS_ON)] _FootstepTexture("Footstep Texture", 2D) = "white" {}
-        [Foldout(Footsteps)] _FootstepDisplacementStrength("Footstep DisplacementStrength", Float) = 1
     }
     SubShader {
         Tags { "RenderType"="Opaque" }
@@ -46,7 +43,6 @@ Shader "Custom/Snow" {
         #pragma target 3.0
         #pragma surface surf Standard addshadow vertex:vert
 
-        #pragma multi_compile FOOTSTEPS_ON FOOTSTEPS_OFF
         #pragma multi_compile NOISEOFFSET_ON NOISEOFFSET_OFF
         #pragma multi_compile OMNIDIRECTIONALSNOW_ON OMNIDIRECTIONALSNOW_OFF
  
@@ -165,13 +161,6 @@ Shader "Custom/Snow" {
 
                 float t = -exp(snowDot01 * (100 * _SnowFalloff - 100)) * (1 - snowDot01) + 1;
                 t *= _SnowOpacity;
-            #endif
-
-            #if FOOTSTEPS_ON
-                for(int i = 0; i < _Footsteps.Length; i++) {
-                    fixed3 footstepCol = tex2D(_FootstepTexture, IN.uv_FootstepTexture * 5 + _Footsteps[i].xy);
-                    snowColor.rgb += footstepCol;
-                }
             #endif
  
             o.Normal = lerp(normals, snowNormals, t);
