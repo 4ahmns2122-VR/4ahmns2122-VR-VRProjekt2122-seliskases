@@ -89,10 +89,6 @@ Shader "Custom/Snow" {
         float _OffsetY;
         float _Range;
 
-        sampler2D _FootstepTexture;
-        float _FootstepDisplacementStrength;
-        float4 _Footsteps[1];
-
         /* Noise generation by: https://github.com/przemyslawzaworski/Unity3D-CG-programming */
         float SampleNoise (float2 position) {
             position = position * _Frequency + float2(_OffsetX, _OffsetY);

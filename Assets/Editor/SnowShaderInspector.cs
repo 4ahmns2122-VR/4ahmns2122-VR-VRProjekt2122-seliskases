@@ -19,7 +19,7 @@ public class SnowShaderInspector : MaterialEditor
         bool omnidirectionalSnowEnabled = keyWords.Contains("OMNIDIRECTIONALSNOW_ON");
 
         EditorGUI.BeginChangeCheck();
-        
+
         noiseOffsetEnabled = EditorGUILayout.Toggle("Noise Offset", noiseOffsetEnabled);
         omnidirectionalSnowEnabled = EditorGUILayout.Toggle("Omnidirectional Snow", omnidirectionalSnowEnabled);
 
