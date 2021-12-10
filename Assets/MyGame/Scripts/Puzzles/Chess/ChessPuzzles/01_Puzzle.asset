@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1a4df501c7f4687bd6fc642939fea4, type: 3}
   m_Name: 01_Puzzle
   m_EditorClassIdentifier: 
-  fen: N1n3/1Q2P3/P1B5/KP3P1P/7q1Q2P3/P1B5/KP3P1P/7q
-  difficulty: 0
+  fen: R6R/1r3pp1/4p1kp/3pP3/1r2qPP1/7P/1P1Q3K/8
+  difficulty: 1
   playerIsWhite: 1
   moves:
-  - startSquare: c5
-    targetSquare: a6
-  - startSquare: b8
-    targetSquare: b7
-  - startSquare: b5
-    targetSquare: d7
-  - startSquare: b7
-    targetSquare: a6
-  - startSquare: b4
-    targetSquare: b5
+  - startSquare: f4
+    targetSquare: f5
+  - startSquare: e6
+    targetSquare: f5
+  - startSquare: d2
+    targetSquare: h6
+  - startSquare: g7
+    targetSquare: h6
+  - startSquare: a8
+    targetSquare: g8

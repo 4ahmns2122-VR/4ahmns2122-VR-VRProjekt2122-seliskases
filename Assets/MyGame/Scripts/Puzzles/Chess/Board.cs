@@ -46,7 +46,7 @@ namespace UnityEngine.Chess
 
         #region Private Methods
 
-        public Board()
+        private void Start()
         {
             CreateGraphicalBoard();
             LoadPuzzle(puzzles[currentPuzzleIndex]);
@@ -66,14 +66,14 @@ namespace UnityEngine.Chess
 
                     Color standardSquareColor = (isLightSquare) ? lightColor : darkColor;
                     Color highlightedTargetSquareColor = (isLightSquare) ? lightHighlightedTargetColor : darkHighlightedTargetColor;
-                    Vector2 squarePosition = new Vector2(-squareOffset + file, -squareOffset + rank);
+                    Vector3 squarePosition = new Vector3(gameObject.transform.position.x + file, gameObject.transform.position.y + rank, gameObject.transform.position.z);
 
                     DrawSquare(standardSquareColor, highlightedTargetSquareColor, highlightedStartColor, squarePosition, rank * 8 + file);
                 }
             }
         }
 
-        private void DrawSquare(Color standardColor, Color highlightedTargetColor, Color highlightedStartColor, Vector2 position, int index)
+        private void DrawSquare(Color standardColor, Color highlightedTargetColor, Color highlightedStartColor, Vector3 position, int index)
         {
             GameObject squareObject = Instantiate(tempSquare);
             squareObject.transform.position = position;
@@ -134,7 +134,7 @@ namespace UnityEngine.Chess
         {
             print("Wrong Move");
 
-            foreach(var square in squares)
+            foreach (var square in squares)
             {
                 square.Reset();
             }
@@ -148,14 +148,14 @@ namespace UnityEngine.Chess
             print("Congratulations");
 
 
-            foreach(var square in squares)
+            foreach (var square in squares)
             {
                 square.Reset();
             }
 
             currentPuzzleIndex++;
 
-            if(currentPuzzleIndex >= puzzles.Count)
+            if (currentPuzzleIndex >= puzzles.Count)
             {
                 print("Every puzzle solved!");
                 return;
