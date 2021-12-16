@@ -21,17 +21,18 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void GrabTorch()
+    public void OnTorchGrabbed()
     {
+        Debug.Log("Torch is grabbed");
         torchIsGrabbed = true;
     }
 
-    public void PlayerWon()
+    private void PlayerWon()
     {
 
     }
 
-    public void PlayerLost()
+    private void PlayerLost()
     {
         Debug.Log("You have lost");
     }

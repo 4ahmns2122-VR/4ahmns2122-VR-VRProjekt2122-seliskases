@@ -1,5 +1,8 @@
-Shader "Custom/Snow" {
+ Shader "Custom/Snow" {
     Properties {
+
+        _TextureScale("Texture Scale", Float) = 1
+
         [Foldout(StartFoldoutGroup, Snow)] _SnowTexture("Snow Texture", 2D) = "white" {}
         [Foldout(Snow)] [NoScaleOffset] _SnowNormal("Snow Normal", 2D) = "bump" {}
         [Foldout(Snow)] _SnowNormalStrength("Snow Normal Strength", Range(0.1, 1)) = 1
@@ -57,6 +60,8 @@ Shader "Custom/Snow" {
             float3 worldNormal;      
             INTERNAL_DATA
         };
+
+        float _TextureScale;
 
         sampler2D _GlossinessTexture;
         half _Glossiness;
@@ -140,14 +145,14 @@ Shader "Custom/Snow" {
         }
  
         void surf (Input IN, inout SurfaceOutputStandard o) {
-            fixed4 color = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            float3 normals = UnpackNormal (tex2D(_MainNormal, IN.uv_MainNormal)) * _NormalStrength;
+            fixed4 color = tex2D (_MainTex, IN.uv_MainTex * _TextureScale) * _Color;
+            float3 normals = UnpackScaleNormal (tex2D(_MainNormal, IN.uv_MainTex * _TextureScale), _NormalStrength);
 
-            fixed4 snowColor = tex2D(_SnowTexture, IN.uv_SnowTexture) * _SnowColor;
-            float3 snowNormals = UnpackNormal(tex2D(_SnowNormal, IN.uv_SnowNormal)) * _SnowNormalStrength;
+            fixed4 snowColor = tex2D(_SnowTexture, IN.uv_MainTex * _TextureScale) * _SnowColor;
+            float3 snowNormals = UnpackScaleNormal(tex2D(_SnowNormal, IN.uv_MainTex * _TextureScale), _SnowNormalStrength);
 
-            fixed4 glossiness = tex2D (_GlossinessTexture, IN.uv_MainTex) + _Glossiness;
-            fixed4 snowGlossiness = tex2D (_SnowGlossinessTexture, IN.uv_MainTex) + _SnowGlossiness;
+            fixed4 glossiness = tex2D (_GlossinessTexture, IN.uv_MainTex * _TextureScale) + _Glossiness;
+            fixed4 snowGlossiness = tex2D (_SnowGlossinessTexture, IN.uv_MainTex * _TextureScale) + _SnowGlossiness;
 
             #if OMNIDIRECTIONALSNOW_ON
                 float t = 1;

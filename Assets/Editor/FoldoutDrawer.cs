@@ -6,7 +6,7 @@ using UnityEditor;
  
 public class FoldoutDrawer : MaterialPropertyDrawer
 {
-    public string argHeader;
+    public string argHeader; 
     public bool argStartFoldoutGroup = false;
     public bool bElementDrawout;
     
