@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace UnityEngine.Chess
 {
@@ -10,6 +11,7 @@ namespace UnityEngine.Chess
         public float squareOffset;
         public Sprite[] pieces;
         public List<Puzzle> puzzles;
+        public Canvas canvas;
 
         [Header("Color Theme")]
         public Color lightColor;
@@ -48,6 +50,8 @@ namespace UnityEngine.Chess
 
         private void Start()
         {
+            // TODO: Disable Teleportation here
+
             CreateGraphicalBoard();
             LoadPuzzle(puzzles[currentPuzzleIndex]);
             currentMoves = new List<Move>(puzzles[0].moves);
@@ -66,7 +70,7 @@ namespace UnityEngine.Chess
 
                     Color standardSquareColor = (isLightSquare) ? lightColor : darkColor;
                     Color highlightedTargetSquareColor = (isLightSquare) ? lightHighlightedTargetColor : darkHighlightedTargetColor;
-                    Vector3 squarePosition = new Vector3(gameObject.transform.position.x + file, gameObject.transform.position.y + rank, gameObject.transform.position.z);
+                    Vector3 squarePosition = new Vector3(gameObject.transform.position.x + file * tempSquare.transform.localScale.x, gameObject.transform.position.y + rank * tempSquare.transform.localScale.y, gameObject.transform.position.z);
 
                     DrawSquare(standardSquareColor, highlightedTargetSquareColor, highlightedStartColor, squarePosition, rank * 8 + file);
                 }
@@ -77,6 +81,7 @@ namespace UnityEngine.Chess
         {
             GameObject squareObject = Instantiate(tempSquare);
             squareObject.transform.position = position;
+            squareObject.transform.parent = canvas.transform;
 
             Square squareLogic = squareObject.GetComponent<Square>();
             squareLogic.Initialize(index, standardColor, highlightedTargetColor, highlightedStartColor);
@@ -158,6 +163,8 @@ namespace UnityEngine.Chess
             if (currentPuzzleIndex >= puzzles.Count)
             {
                 print("Every puzzle solved!");
+                //TODO: Disable teleportation here
+
                 return;
             }
 
