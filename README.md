@@ -103,3 +103,5 @@ welche das Bild subtil verzerren, ohne für den Spieler unangenehm zu sein.
 ## Assets
  - https://www.turbosquid.com/3d-models/snowman-christmas-3d-model-1670626
  - https://www.turbosquid.com/3d-models/tree-pixel-low-poly-3d-model-1764347
+ - https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576
+ - https://www.turbosquid.com/3d-models/chess-queen-3d-1656436
