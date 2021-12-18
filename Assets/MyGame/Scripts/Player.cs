@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Player : MonoBehaviour
 {
     public float timeUntilFrozen;
+    public PostProcessProfile postProcessProfile;
 
     private float currentTime;
     private bool torchIsGrabbed = false;
@@ -25,6 +27,8 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Torch is grabbed");
         torchIsGrabbed = true;
+        postProcessProfile.RemoveSettings<DepthOfField>();
+        postProcessProfile.RemoveSettings<ChromaticAberration>();
     }
 
     private void PlayerWon()
