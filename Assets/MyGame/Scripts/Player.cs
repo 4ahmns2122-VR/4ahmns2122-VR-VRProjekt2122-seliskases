@@ -27,13 +27,12 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Torch is grabbed");
         torchIsGrabbed = true;
-        postProcessProfile.RemoveSettings<DepthOfField>();
         postProcessProfile.RemoveSettings<ChromaticAberration>();
     }
 
     private void PlayerWon()
     {
-
+        // TODO: Implement PlayerWon Behaviour here
     }
 
     private void PlayerLost()
