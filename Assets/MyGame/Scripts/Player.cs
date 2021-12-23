@@ -11,6 +11,11 @@ public class Player : MonoBehaviour
     private float currentTime;
     private bool torchIsGrabbed = false;
 
+    private void Start()
+    {
+        postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 1;
+    }
+
     private void Update()
     {
         if (torchIsGrabbed) return;
@@ -27,7 +32,7 @@ public class Player : MonoBehaviour
     {
         Debug.Log("Torch is grabbed");
         torchIsGrabbed = true;
-        postProcessProfile.RemoveSettings<ChromaticAberration>();
+        postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 0;
     }
 
     private void PlayerWon()
@@ -38,5 +43,10 @@ public class Player : MonoBehaviour
     private void PlayerLost()
     {
         Debug.Log("You have lost");
+    }
+
+    public void Test()
+    {
+        postProcessProfile.GetSetting<Bloom>().intensity.value = 100;
     }
 }
