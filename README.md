@@ -106,3 +106,4 @@ welche das Bild subtil verzerren, ohne für den Spieler unangenehm zu sein.
  - https://assetstore.unity.com/packages/2d/textures-materials/sky/customizable-skybox-174576
  - https://www.turbosquid.com/3d-models/chess-queen-3d-1656436
  - https://www.turbosquid.com/3d-models/free-max-mode-frame/719036#
+ - https://www.turbosquid.com/3d-models/3ds-medieval-door/1126894
