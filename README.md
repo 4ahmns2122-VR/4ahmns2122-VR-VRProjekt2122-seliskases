@@ -107,3 +107,4 @@ welche das Bild subtil verzerren, ohne für den Spieler unangenehm zu sein.
  - https://www.turbosquid.com/3d-models/chess-queen-3d-1656436
  - https://www.turbosquid.com/3d-models/free-max-mode-frame/719036#
  - https://www.turbosquid.com/3d-models/medieval-door-3d-model-1207184
+ - https://www.turbosquid.com/3d-models/old-key-3ds-free/1099143
