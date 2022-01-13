@@ -7,6 +7,7 @@ public class PuzzleTrigger : MonoBehaviour
 {
     public GameObject boardContainer;
     public GameObject key;
+    public Transform keySpawnPos;
 
     private void Start()
     {
@@ -23,7 +24,7 @@ public class PuzzleTrigger : MonoBehaviour
 
     private void PuzzleFinished()
     {
-        Instantiate(key, transform.position, Quaternion.identity);
+        Instantiate(key, keySpawnPos.position, Quaternion.identity);
     }
 
     private void OnDisable()
