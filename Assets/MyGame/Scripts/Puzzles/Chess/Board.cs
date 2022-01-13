@@ -44,6 +44,9 @@ namespace UnityEngine.Chess
         public delegate void OnPuzzleSolved();
         public static OnPuzzleSolved puzzleSolvedDelegate;
 
+        public delegate void OnPuzzleFinished();
+        public static OnPuzzleFinished puzzleFinishedDelegate;
+
         #endregion
 
         #region Private Methods
@@ -163,7 +166,8 @@ namespace UnityEngine.Chess
             if (currentPuzzleIndex >= puzzles.Count)
             {
                 print("Every puzzle solved!");
-                //TODO: Disable teleportation here
+                puzzleFinishedDelegate?.Invoke();
+                //TODO: Enable teleportation here
 
                 return;
             }

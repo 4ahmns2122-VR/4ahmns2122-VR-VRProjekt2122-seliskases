@@ -44,9 +44,4 @@ public class Player : MonoBehaviour
     {
         Debug.Log("You have lost");
     }
-
-    public void Test()
-    {
-        postProcessProfile.GetSetting<Bloom>().intensity.value = 100;
-    }
 }
