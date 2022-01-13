@@ -108,3 +108,4 @@ welche das Bild subtil verzerren, ohne für den Spieler unangenehm zu sein.
  - https://www.turbosquid.com/3d-models/free-max-mode-frame/719036#
  - https://www.turbosquid.com/3d-models/medieval-door-3d-model-1207184
  - https://www.turbosquid.com/3d-models/old-key-3ds-free/1099143
+ - https://www.cgtrader.com/free-3d-models/furniture/lamp/medieval-torch-game-ready-has-emission
