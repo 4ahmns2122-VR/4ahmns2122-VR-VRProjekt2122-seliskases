@@ -5,18 +5,18 @@ using UnityEngine.Chess;
 
 public class PuzzleTrigger : MonoBehaviour
 {
-    public Board board;
+    public GameObject boardContainer;
 
     private void Start()
     {
-        board.gameObject.SetActive(false);
+        boardContainer.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            board.gameObject.SetActive(true);
+            boardContainer.SetActive(true);
             new Board();
         }
     }

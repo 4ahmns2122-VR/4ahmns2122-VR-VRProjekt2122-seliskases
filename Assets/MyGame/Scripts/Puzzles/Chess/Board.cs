@@ -10,8 +10,8 @@ namespace UnityEngine.Chess
         public GameObject tempSquare;
         public float squareOffset;
         public Sprite[] pieces;
-        public List<Puzzle> puzzles;
         public Canvas canvas;
+        public List<Puzzle> puzzles;
 
         [Header("Color Theme")]
         public Color lightColor;
@@ -83,8 +83,8 @@ namespace UnityEngine.Chess
         private void DrawSquare(Color standardColor, Color highlightedTargetColor, Color highlightedStartColor, Vector3 position, int index)
         {
             GameObject squareObject = Instantiate(tempSquare);
-            squareObject.transform.position = position;
             squareObject.transform.parent = canvas.transform;
+            squareObject.transform.position = position;
 
             Square squareLogic = squareObject.GetComponent<Square>();
             squareLogic.Initialize(index, standardColor, highlightedTargetColor, highlightedStartColor);
