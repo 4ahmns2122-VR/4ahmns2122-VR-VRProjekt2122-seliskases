@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
     public float timeUntilFrozen;
     public PostProcessProfile postProcessProfile;
+    public TextMeshProUGUI freezeCounter;
+    
 
     private float currentTime;
     private bool torchIsGrabbed = false;
@@ -14,15 +17,30 @@ public class Player : MonoBehaviour
     private void Start()
     {
         postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 1;
+        currentTime = 60;
     }
 
     private void Update()
     {
         if (torchIsGrabbed) return;
 
-        currentTime += Time.deltaTime;
+        currentTime -= Time.deltaTime;
 
-        if(currentTime > timeUntilFrozen)
+        float minutes = Mathf.Floor(currentTime / 60);
+        float seconds = Mathf.RoundToInt(currentTime % 60);
+
+        freezeCounter.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+        if(currentTime > 40)
+        {
+            freezeCounter.color = Color.green;
+        } else if(currentTime > 20)
+        {
+            freezeCounter.color = Color.yellow;
+        } else if(currentTime > 0)
+        {
+            freezeCounter.color = Color.red;
+        } else
         {
             PlayerLost();
         }
