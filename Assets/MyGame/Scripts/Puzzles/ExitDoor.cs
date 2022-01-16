@@ -14,6 +14,8 @@ public class ExitDoor : MonoBehaviour
     {
         if(other.CompareTag("Key") && !isOpen)
         {
+            AudioSource source = GetComponent<AudioSource>();
+            source.PlayOneShot(source.clip);
             StartCoroutine(OpenDoor());
         }
     }

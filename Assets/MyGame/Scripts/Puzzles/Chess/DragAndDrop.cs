@@ -12,6 +12,8 @@ namespace UnityEngine.Chess
         private int[] currentLegalSquares = new int[0];
         private int currentStartSquare;
 
+        public AudioClip moveSFX;
+
         public static DragAndDrop instance;
 
         private void Start()
@@ -51,6 +53,7 @@ namespace UnityEngine.Chess
 
                     StopAllCoroutines();
                     targetSquare.SetPiece(pieceRenderer.sprite, currentPieceIndex);
+                    GetComponent<AudioSource>().PlayOneShot(moveSFX);
                     currentLegalSquares = new int[0];
                     pieceRenderer.sprite = null;
 
@@ -110,6 +113,7 @@ namespace UnityEngine.Chess
                     Board.currentMoves.RemoveAt(0);
                     Board.whiteToMove = !Board.whiteToMove;
 
+                    GetComponent<AudioSource>().PlayOneShot(moveSFX);
                     pieceRenderer.sprite = null;
                     break;
                 }
