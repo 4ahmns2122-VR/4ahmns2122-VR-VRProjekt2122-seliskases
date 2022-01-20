@@ -26,24 +26,23 @@ public class Player : MonoBehaviour
 
         currentTime -= Time.deltaTime;
 
-        float minutes = Mathf.Floor(currentTime / 60);
-        float seconds = Mathf.RoundToInt(currentTime % 60);
-
-        freezeCounter.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        Color color = Color.white;
 
         if(currentTime > 40)
         {
-            freezeCounter.color = Color.green;
+            color = Color.green;
         } else if(currentTime > 20)
         {
-            freezeCounter.color = Color.yellow;
+            color = Color.yellow;
         } else if(currentTime > 0)
         {
-            freezeCounter.color = Color.red;
+            color = Color.red;
         } else
         {
             PlayerLost();
         }
+
+        UserInterfaceManager.instance.SetTimer(currentTime, color);
     }
 
     public void OnTorchGrabbed()
@@ -53,13 +52,8 @@ public class Player : MonoBehaviour
         postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 0;
     }
 
-    private void PlayerWon()
-    {
-        // TODO: Implement PlayerWon Behaviour here
-    }
-
     private void PlayerLost()
     {
-        Debug.Log("You have lost");
+        UserInterfaceManager.instance.DisplayRestartPanel("You lost!");
     }
 }

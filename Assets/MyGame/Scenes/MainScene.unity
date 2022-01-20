@@ -473,7 +473,6 @@ GameObject:
   - component: {fileID: 170087001}
   - component: {fileID: 170087003}
   - component: {fileID: 170087002}
-  - component: {fileID: 170087004}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -540,19 +539,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170087000}
   m_CullTransparentMesh: 1
---- !u!114 &170087004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170087000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46ceec2c5742b421d8a38999cb6e7a9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: {fileID: 1882720679}
 --- !u!1001 &189102996
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8677,7 +8663,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 170087004}
+      - m_Target: {fileID: 1979124742}
         m_TargetAssemblyTypeName: UserInterfaceManager, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
@@ -8740,6 +8726,7 @@ GameObject:
   - component: {fileID: 1979124738}
   - component: {fileID: 1979124737}
   - component: {fileID: 1979124741}
+  - component: {fileID: 1979124742}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -8848,6 +8835,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!114 &1979124742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979124736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ceec2c5742b421d8a38999cb6e7a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: {fileID: 1882720679}
 --- !u!1 &2041961801
 GameObject:
   m_ObjectHideFlags: 0

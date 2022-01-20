@@ -153,9 +153,6 @@ namespace UnityEngine.Chess
 
         private void PuzzleSolved()
         {
-            print("Congratulations");
-
-
             foreach (var square in squares)
             {
                 square.Reset();

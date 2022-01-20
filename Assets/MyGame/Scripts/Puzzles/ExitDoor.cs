@@ -39,6 +39,7 @@ public class ExitDoor : MonoBehaviour
             if(currentLerpTime > doorAnimationDuration)
             {
                 isOpen = true;
+                UserInterfaceManager.instance.DisplayRestartPanel("Congratulations!");
                 break;
             }
 

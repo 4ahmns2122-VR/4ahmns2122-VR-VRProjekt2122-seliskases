@@ -9,10 +9,27 @@ public class UserInterfaceManager : MonoBehaviour
     public static UserInterfaceManager instance;
 
     public TextMeshProUGUI message;
+    public TextMeshProUGUI timer;
+    public GameObject restartPanel;
 
-    public void SetMessage(string msg)
+    private void Awake()
     {
+        restartPanel.SetActive(false);
+    }
+
+    public void DisplayRestartPanel(string msg)
+    {
+        restartPanel.SetActive(true);
         message.text = msg;
+    }
+
+    public void SetTimer(float time, Color color)
+    {
+        float minutes = Mathf.Floor(time / 60);
+        float seconds = Mathf.RoundToInt(time % 60);
+
+        timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timer.color = color;
     }
 
     public void Restart()
