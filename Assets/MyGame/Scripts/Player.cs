@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
-using TMPro;
+using UnityEngine.Audio;
 
 public class Player : MonoBehaviour
 {
+    public AudioMixer mixer;
+
     public float timeUntilFrozen;
     public PostProcessProfile postProcessProfile;
-    
 
     private float currentTime;
     private bool torchIsGrabbed = false;
