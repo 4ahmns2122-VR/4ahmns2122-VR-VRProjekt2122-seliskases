@@ -15,10 +15,12 @@ public class UserInterfaceManager : MonoBehaviour
     private void Awake()
     {
         restartPanel.SetActive(false);
+        timer.gameObject.SetActive(true);
     }
 
     public void DisplayRestartPanel(string msg)
     {
+        timer.gameObject.SetActive(false);
         restartPanel.SetActive(true);
         message.text = msg;
     }

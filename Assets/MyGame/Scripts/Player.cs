@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
 {
     public float timeUntilFrozen;
     public PostProcessProfile postProcessProfile;
-    public TextMeshProUGUI freezeCounter;
     
 
     private float currentTime;
@@ -50,6 +49,7 @@ public class Player : MonoBehaviour
         Debug.Log("Torch is grabbed");
         torchIsGrabbed = true;
         postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 0;
+        UserInterfaceManager.instance.timer.gameObject.SetActive(false);
     }
 
     private void PlayerLost()

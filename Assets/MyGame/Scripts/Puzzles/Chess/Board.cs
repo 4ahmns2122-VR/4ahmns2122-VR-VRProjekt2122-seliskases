@@ -12,6 +12,7 @@ namespace UnityEngine.Chess
         public Sprite[] pieces;
         public Canvas canvas;
         public List<Puzzle> puzzles;
+        public float timeToSolve;
 
         [Header("Color Theme")]
         public Color lightColor;
@@ -33,6 +34,7 @@ namespace UnityEngine.Chess
         #region Private Variables
 
         private int currentPuzzleIndex = 0;
+        private float currentTime;
 
         #endregion
 
@@ -55,12 +57,41 @@ namespace UnityEngine.Chess
         {
             // TODO: Disable Teleportation here
 
+            UserInterfaceManager.instance.timer.gameObject.SetActive(true);
+            currentTime = timeToSolve;
+
             CreateGraphicalBoard();
             LoadPuzzle(puzzles[currentPuzzleIndex]);
             currentMoves = new List<Move>(puzzles[0].moves);
 
             wrongMoveDelegate += WrongMove;
             puzzleSolvedDelegate += PuzzleSolved;
+        }
+
+        private void Update()
+        {
+            currentTime -= Time.deltaTime;
+
+            Color color = Color.white;
+
+            if (currentTime > 40)
+            {
+                color = Color.green;
+            }
+            else if (currentTime > 20)
+            {
+                color = Color.yellow;
+            }
+            else if (currentTime > 0)
+            {
+                color = Color.red;
+            }
+            else
+            {
+                UserInterfaceManager.instance.DisplayRestartPanel("You lost!");
+            }
+
+            UserInterfaceManager.instance.SetTimer(currentTime, color);
         }
 
         private void CreateGraphicalBoard()
@@ -153,6 +184,8 @@ namespace UnityEngine.Chess
 
         private void PuzzleSolved()
         {
+            currentTime = timeToSolve;
+
             foreach (var square in squares)
             {
                 square.Reset();
