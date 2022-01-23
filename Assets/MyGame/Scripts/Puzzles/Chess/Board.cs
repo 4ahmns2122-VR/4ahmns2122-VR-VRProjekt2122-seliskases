@@ -55,7 +55,7 @@ namespace UnityEngine.Chess
 
         private void Start()
         {
-            // TODO: Disable Teleportation here
+            UserInterfaceManager.instance.SetToGazeHand();
 
             UserInterfaceManager.instance.timer.gameObject.SetActive(true);
             currentTime = timeToSolve;

@@ -11,6 +11,8 @@ public class UserInterfaceManager : MonoBehaviour
     public TextMeshProUGUI message;
     public TextMeshProUGUI timer;
     public GameObject restartPanel;
+    public GameObject leftHandNormal;
+    public GameObject leftHandGaze;
 
     private void Awake()
     {
@@ -18,6 +20,8 @@ public class UserInterfaceManager : MonoBehaviour
 
         restartPanel.SetActive(false);
         timer.gameObject.SetActive(true);
+
+        SetToNormalHand();
     }
 
     public void DisplayRestartPanel(string msg)
@@ -25,6 +29,8 @@ public class UserInterfaceManager : MonoBehaviour
         timer.gameObject.SetActive(false);
         restartPanel.SetActive(true);
         message.text = msg;
+
+        SetToGazeHand();
     }
 
     public void SetTimer(float time, Color color)
@@ -34,6 +40,18 @@ public class UserInterfaceManager : MonoBehaviour
 
         timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         timer.color = color;
+    }
+
+    public void SetToGazeHand()
+    {
+        leftHandGaze.SetActive(true);
+        leftHandNormal.SetActive(false);
+    }
+
+    public void SetToNormalHand()
+    {
+        leftHandNormal.SetActive(true);
+        leftHandGaze.SetActive(false);
     }
 
     public void Restart()

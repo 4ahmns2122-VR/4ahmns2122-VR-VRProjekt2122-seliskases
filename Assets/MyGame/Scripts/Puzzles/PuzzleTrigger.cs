@@ -24,6 +24,7 @@ public class PuzzleTrigger : MonoBehaviour
 
     private void PuzzleFinished()
     {
+        UserInterfaceManager.instance.SetToNormalHand();
         UserInterfaceManager.instance.timer.gameObject.SetActive(false);
         Instantiate(key, keySpawnPos.position, Quaternion.identity);
     }
