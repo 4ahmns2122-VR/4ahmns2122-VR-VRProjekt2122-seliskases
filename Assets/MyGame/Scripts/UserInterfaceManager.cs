@@ -14,6 +14,8 @@ public class UserInterfaceManager : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
+
         restartPanel.SetActive(false);
         timer.gameObject.SetActive(true);
     }
