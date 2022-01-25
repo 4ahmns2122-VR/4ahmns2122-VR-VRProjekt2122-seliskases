@@ -71,6 +71,7 @@ namespace UnityEngine.Chess
         private void Update()
         {
             currentTime -= Time.deltaTime;
+            UserInterfaceManager.instance.cheatText.text = currentMoves?[0].startSquare + "-" + currentMoves?[0].targetSquare;
 
             Color color = Color.white;
 
@@ -122,6 +123,7 @@ namespace UnityEngine.Chess
             squares[index] = squareLogic;
         }
 
+        // Source: Sebastian Lague - https://www.youtube.com/watch?v=U4ogK0MIzqk&t=323s
         private void LoadPuzzle(Puzzle position)
         {
             whiteToMove = position.playerIsWhite;
