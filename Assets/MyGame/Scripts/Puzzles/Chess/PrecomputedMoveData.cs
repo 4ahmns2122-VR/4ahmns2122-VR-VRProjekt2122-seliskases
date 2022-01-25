@@ -8,6 +8,8 @@ namespace UnityEngine.Chess
 		public static readonly int[][] knightDirectionOffsets;
 		public static readonly int[][] kingDirectionOffsets;
 		public static readonly int[] pawnCaptureOffsets = { 7, 9 };
+
+		// Source: Sebastian Lague - https://www.youtube.com/watch?v=U4ogK0MIzqk&t=323s
 		public static readonly int[] slidingPieceDirectionOffsets = { 8, -8, -1, 1, 7, -7, 9, -9 };
 
 		static PrecomputedMoveData()
@@ -26,6 +28,7 @@ namespace UnityEngine.Chess
 
 			numSquaresToEdge = new int[64][];
 
+			// Source: Sebastian Lague - https://www.youtube.com/watch?v=U4ogK0MIzqk&t=323s
 			for (int squareIndex = 0; squareIndex < 64; squareIndex++)
 			{
 				int y = squareIndex / 8;

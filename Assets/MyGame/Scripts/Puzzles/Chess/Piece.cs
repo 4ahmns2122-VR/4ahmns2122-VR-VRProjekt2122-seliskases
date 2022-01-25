@@ -47,6 +47,7 @@ namespace UnityEngine.Chess
 
         #region Private Methods
 
+        // Source (only the SlidingMoves function!): Sebastian Lague - https://www.youtube.com/watch?v=U4ogK0MIzqk&t=323s
         private static List<int> SlidingMoves(int pieceType, bool isWhitePiece, int startSquare, Square[] currentSquares)
         {
             List<int> output = new List<int>();
