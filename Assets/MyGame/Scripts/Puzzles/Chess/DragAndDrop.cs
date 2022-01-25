@@ -13,6 +13,7 @@ namespace UnityEngine.Chess
         private int currentStartSquare;
 
         public AudioClip moveSFX;
+        public AudioClip errorSFX;
 
         public static DragAndDrop instance;
 
@@ -59,6 +60,7 @@ namespace UnityEngine.Chess
 
                     if (!correctStartSquare || !correctTargetSquare)
                     {
+                        GetComponent<AudioSource>().PlayOneShot(errorSFX);
                         Board.wrongMoveDelegate();
                         return true;
                     }
