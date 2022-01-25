@@ -100,6 +100,16 @@ welche das Bild subtil verzerren, ohne für den Spieler unangenehm zu sein.
 20. Endtestung
 21. Abgabe
 
+## Limitations
+
+ - Couldn't test the functionality of the chess puzzle with the VR-Environment. However, it works fine as a 2D application.
+ - Couldn't test the gaze pointer within the VR-Environment. This includes moving the chess pieces as well as the UI Input.
+ - Couldn't test final performance with Oculus
+
+## Third-party code
+https://www.youtube.com/watch?v=U4ogK0MIzqk&t=323s
+This project documentation as well the respective GitHub repository were used as a starting point for the chess logic. Code copies are implicitly documented as comments in the individual .cs files.
+
 ## Assets
  - https://www.turbosquid.com/3d-models/snowman-christmas-3d-model-1670626
  - https://www.turbosquid.com/3d-models/tree-pixel-low-poly-3d-model-1764347
