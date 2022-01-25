@@ -119,3 +119,5 @@ This project documentation as well the respective GitHub repository were used as
  - https://www.turbosquid.com/3d-models/medieval-door-3d-model-1207184
  - https://www.turbosquid.com/3d-models/old-key-3ds-free/1099143
  - https://www.cgtrader.com/free-3d-models/furniture/lamp/medieval-torch-game-ready-has-emission
+ - https://assetstore.unity.com/packages/3d/environments/historic/modular-medieval-lanterns-85527
+ - https://assetstore.unity.com/packages/3d/environments/historic/historic-environment-142116
