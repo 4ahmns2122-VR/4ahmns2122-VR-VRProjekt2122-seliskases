@@ -14,6 +14,7 @@ namespace UnityEngine.Chess
 
         public AudioClip moveSFX;
         public AudioClip errorSFX;
+        public AudioClip solvedPuzzleSFX;
 
         public static DragAndDrop instance;
 
@@ -79,6 +80,7 @@ namespace UnityEngine.Chess
                     }
                     else
                     {
+                        GetComponent<AudioSource>().PlayOneShot(solvedPuzzleSFX);
                         Board.puzzleSolvedDelegate();
                     }
 
