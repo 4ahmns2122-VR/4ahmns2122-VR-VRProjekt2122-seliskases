@@ -108,19 +108,19 @@ welche das Bild subtil verzerren, ohne für den Spieler unangenehm zu sein.
 
 ## Packages
 
--2D Sprite 1.0.0
--JetBrains Rider Editor 2.0.7
--Oculus XR Plugin 1.10.0
--Post Processing 3.1.1
--Test Framework 1.1.29
--TextMeshPro 3.0.6
--Timeline 1.4.8
--Unity UI 1.0.0
--Version Control 1.9.0
--Visual Studio Code Editor 1.2.4
--Visual Studio Editor 2.0.11
--XR Interaction Toolkit 1.0.0-pre.8
--XR Plugin Management 4.2.0
+- 2D Sprite 1.0.0
+- JetBrains Rider Editor 2.0.7
+- Oculus XR Plugin 1.10.0
+- Post Processing 3.1.1
+- Test Framework 1.1.29
+- TextMeshPro 3.0.6
+- Timeline 1.4.8
+- Unity UI 1.0.0
+- Version Control 1.9.0
+- Visual Studio Code Editor 1.2.4
+- Visual Studio Editor 2.0.11
+- XR Interaction Toolkit 1.0.0-pre.8
+- XR Plugin Management 4.2.0
 
 ## Third-party code
 https://www.youtube.com/watch?v=U4ogK0MIzqk&t=323s
