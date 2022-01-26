@@ -30,8 +30,6 @@ public class UserInterfaceManager : MonoBehaviour
         timer.gameObject.SetActive(false);
         restartPanel.SetActive(true);
         message.text = msg;
-
-        SetToGazeHand();
     }
 
     public void SetTimer(float time, Color color)
@@ -53,10 +51,5 @@ public class UserInterfaceManager : MonoBehaviour
     {
         leftHandNormal.SetActive(true);
         leftHandGaze.SetActive(false);
-    }
-
-    public void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
