@@ -19,6 +19,7 @@ namespace UnityEngine.Chess
             return StandardNotationToSquareIndex(targetSquare);
         }
 
+        // Converts the standard Notation to its respective square index (e.g. d1 => 3)
         private int StandardNotationToSquareIndex(string standardNotation)
         {
             string regexExpression = "^[a-h][1-8]$";
@@ -26,14 +27,12 @@ namespace UnityEngine.Chess
 
             if (!regex.IsMatch(standardNotation)) return - 1;
 
-            int rank;
-
             char[] standardNotationArr = standardNotation.ToCharArray();
 
             // Convert to ASCII
             int file = (int)standardNotationArr[0] - 96;
 
-            rank = (int)char.GetNumericValue(standardNotationArr[1]);
+            int rank = (int)char.GetNumericValue(standardNotationArr[1]);
             return ((rank - 1) * 8 + (file - 1));
         }
     }

@@ -47,6 +47,9 @@ namespace UnityEngine.Chess
 
         #region Private Methods
 
+        // The following algorithms calculate the quare indexes the current piece can move to. The algorithms account for
+        // capturing pieces, double pawn-moves, etc.
+
         // Source (only the SlidingMoves function!): Sebastian Lague - https://www.youtube.com/watch?v=U4ogK0MIzqk&t=323s
         private static List<int> SlidingMoves(int pieceType, bool isWhitePiece, int startSquare, Square[] currentSquares)
         {

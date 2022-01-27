@@ -199,7 +199,6 @@ namespace UnityEngine.Chess
             {
                 print("Every puzzle solved!");
                 puzzleFinishedDelegate?.Invoke();
-                //TODO: Enable teleportation here
 
                 return;
             }
