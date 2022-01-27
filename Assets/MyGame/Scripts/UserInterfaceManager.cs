@@ -8,7 +8,7 @@ public class UserInterfaceManager : MonoBehaviour
     public TextMeshProUGUI message;
     public TextMeshProUGUI cheatText;
     public TextMeshProUGUI timer;
-    public GameObject restartPanel;
+    public GameObject restartPanel; 
     public GameObject leftHandNormal;
     public GameObject leftHandGaze;
 
