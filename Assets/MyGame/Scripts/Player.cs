@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
             color = Color.red;
         } else
         {
-            PlayerLost();
+            UserInterfaceManager.instance.DisplayRestartPanel("You lost!");
         }
 
         UserInterfaceManager.instance.SetTimer(currentTime, color);
@@ -49,16 +49,10 @@ public class Player : MonoBehaviour
 
     public void OnTorchGrabbed()
     {
-        Debug.Log("Torch is grabbed");
         torchIsGrabbed = true;
         postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 0;
         UserInterfaceManager.instance.timer.gameObject.SetActive(false);
         mixer.SetFloat("CutoffFrequency", 22000);
         mixer.SetFloat("Resonance", 0);
-    }
-
-    private void PlayerLost()
-    {
-        UserInterfaceManager.instance.DisplayRestartPanel("You lost!");
     }
 }
