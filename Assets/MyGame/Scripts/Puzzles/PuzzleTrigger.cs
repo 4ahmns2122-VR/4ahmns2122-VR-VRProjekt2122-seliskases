@@ -18,7 +18,8 @@ public class PuzzleTrigger : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            boardContainer.SetActive(true);
+            //boardContainer.SetActive(true);
+            PuzzleFinished();
         }
     }
 

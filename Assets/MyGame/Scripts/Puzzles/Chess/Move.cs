@@ -19,7 +19,7 @@ namespace UnityEngine.Chess
             return StandardNotationToSquareIndex(targetSquare);
         }
 
-        // Converts the standard Notation to its respective square index (e.g. d1 => 3)
+        // Converts the standard notation to its respective square index (e.g. d1 => 3)
         private int StandardNotationToSquareIndex(string standardNotation)
         {
             string regexExpression = "^[a-h][1-8]$";
