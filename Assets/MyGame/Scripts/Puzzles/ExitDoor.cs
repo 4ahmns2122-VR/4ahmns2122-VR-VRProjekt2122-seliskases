@@ -5,6 +5,7 @@ using UnityEngine;
 public class ExitDoor : MonoBehaviour
 {
     public GameObject doorContainer;
+    public GameObject queen;
     public float doorAnimationDuration;
     public AnimationCurve curve;
 
@@ -39,6 +40,7 @@ public class ExitDoor : MonoBehaviour
             if(currentLerpTime > doorAnimationDuration)
             {
                 isOpen = true;
+                queen.SetActive(true);
                 UserInterfaceManager.instance.DisplayRestartPanel("Congratulations!");
                 break;
             }
