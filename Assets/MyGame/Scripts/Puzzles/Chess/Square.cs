@@ -36,8 +36,7 @@ namespace UnityEngine.Chess
             pieceIndex = index;
         }
 
-        // TODO: Trigger this function via raycast
-        private void OnMouseDown()
+        public void OnRaycast()
         {
             if (DragAndDrop.instance.RequestPiecePlacement(this))
             {

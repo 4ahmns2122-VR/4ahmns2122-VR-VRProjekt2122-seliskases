@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2361519350076243545}
   - component: {fileID: 1257504843210542525}
   - component: {fileID: 1257504843210542524}
-  - component: {fileID: 1257504843210542527}
   - component: {fileID: 7126818416750269418}
   - component: {fileID: 2539260956614235626}
   m_Layer: 5
@@ -99,20 +98,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257504843210542521}
   m_CullTransparentMesh: 1
---- !u!114 &1257504843210542527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257504843210542521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 760a46fd9bee147eabfdc108b48d22ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pieceRenderer: {fileID: 0}
-  backgroundRenderer: {fileID: 0}
 --- !u!223 &7126818416750269418
 Canvas:
   m_ObjectHideFlags: 0
@@ -252,7 +237,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3239435999284045862}
   - component: {fileID: 1257504844109646785}
-  - component: {fileID: 1257504844109646784}
+  - component: {fileID: 7507252568156515892}
+  - component: {fileID: 8100094905061547765}
   m_Layer: 5
   m_Name: Square
   m_TagString: Untagged
@@ -296,32 +282,101 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pieceRenderer: {fileID: 1257504843210542525}
   backgroundRenderer: {fileID: 1257504843852406441}
---- !u!61 &1257504844109646784
-BoxCollider2D:
+--- !u!65 &7507252568156515892
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257504844109646786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 0.06826774}
+  m_Center: {x: 0, y: 0, z: 0.0071249204}
+--- !u!114 &8100094905061547765
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257504844109646786}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionManager: {fileID: 0}
+  m_Colliders:
+  - {fileID: 7507252568156515892}
+  m_InteractionLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CustomReticle: {fileID: 0}
+  m_FirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_LastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_HoverEntered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1257504844109646785}
+        m_TargetAssemblyTypeName: UnityEngine.Chess.Square, Assembly-CSharp
+        m_MethodName: OnRaycast
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_HoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_SelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Activated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Deactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnFirstHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnLastHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnHoverExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectExited:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSelectCanceled:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnDeactivate:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1257504844820444163
 GameObject:
   m_ObjectHideFlags: 0

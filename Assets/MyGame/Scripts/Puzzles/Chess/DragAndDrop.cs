@@ -1,4 +1,6 @@
 using System.Collections;
+using UnityEngine.XR.Interaction.Toolkit;
+
 
 namespace UnityEngine.Chess
 {
@@ -15,6 +17,8 @@ namespace UnityEngine.Chess
         public AudioClip moveSFX;
         public AudioClip errorSFX;
         public AudioClip solvedPuzzleSFX;
+
+        public XRRayInteractor rayInteractor;
 
         public static DragAndDrop instance;
 
@@ -34,9 +38,12 @@ namespace UnityEngine.Chess
 
             while (true)
             {
-                Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-                Vector2 objectPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-                transform.position = objectPosition;
+                RaycastHit hit;
+                rayInteractor.TryGetCurrent3DRaycastHit(out hit);
+
+
+                Vector3 position = new Vector3(hit.point.x, hit.point.y, 0);
+                transform.position = position;
 
                 yield return instruction;
             }
