@@ -41,9 +41,8 @@ namespace UnityEngine.Chess
                 RaycastHit hit;
                 rayInteractor.TryGetCurrent3DRaycastHit(out hit);
 
-
-                Vector3 position = new Vector3(hit.point.x, hit.point.y, 0);
-                transform.position = position;
+                Vector3 position = new Vector3(hit.point.x + 5.225f, hit.point.y - 0.025f, 0) * 4;
+                transform.localPosition = position;
 
                 yield return instruction;
             }
