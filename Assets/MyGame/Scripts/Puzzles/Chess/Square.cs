@@ -36,6 +36,7 @@ namespace UnityEngine.Chess
             pieceIndex = index;
         }
 
+        // This function is triggered by the XR Raycast Event which is assigned in the inspector
         public void OnRaycast()
         {
             if (DragAndDrop.instance.RequestPiecePlacement(this))
