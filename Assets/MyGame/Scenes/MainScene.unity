@@ -2159,8 +2159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abc3125ecf8628e4991e122b4f079032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gripInputAction: {fileID: 1075703979425398397, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  triggerInputAction: {fileID: 2878920315037060051, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  gripInputAction: {fileID: 2878920315037060051, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  triggerInputAction: {fileID: 1075703979425398397, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!1 &919687407
 GameObject:
   m_ObjectHideFlags: 0
@@ -11584,7 +11584,7 @@ MonoBehaviour:
   canvas: {fileID: 702226885}
   puzzles:
   - {fileID: 11400000, guid: 4c027493818334979b0feb79ec8c4bf7, type: 2}
-  - {fileID: 11400000, guid: 4c027493818334979b0feb79ec8c4bf7, type: 2}
+  - {fileID: 11400000, guid: 82e595631b895412182f253c7d12c8ad, type: 2}
   timeToSolve: 60
   lightColor: {r: 0.9254902, g: 0.91764706, b: 0.91764706, a: 1}
   lightHighlightedTargetColor: {r: 0.8784314, g: 0.68235296, b: 0.68235296, a: 1}

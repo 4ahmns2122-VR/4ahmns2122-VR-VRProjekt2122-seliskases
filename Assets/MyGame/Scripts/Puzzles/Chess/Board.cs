@@ -58,6 +58,7 @@ namespace UnityEngine.Chess
 
             UserInterfaceManager.instance.timer.gameObject.SetActive(true);
             currentTime = timeToSolve;
+            currentTime = 270;
 
             CreateGraphicalBoard();
             LoadPuzzle(puzzles[currentPuzzleIndex]);
