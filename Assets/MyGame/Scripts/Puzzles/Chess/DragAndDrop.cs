@@ -104,12 +104,12 @@ namespace UnityEngine.Chess
             YieldInstruction instruction = new WaitForEndOfFrame();
 
             Vector2 tempOrigin = Board.squares[move.GetStartSquareIndex()].transform.position;
-            Vector2 origin = tempOrigin + Board.squares[move.GetStartSquareIndex()].GetComponent<BoxCollider2D>().offset;
+            // Vector2 origin = tempOrigin + Board.squares[move.GetStartSquareIndex()].GetComponent<BoxCollider2D>().offset;
 
             Vector2 tempDestination = Board.squares[move.GetTargetSquareIndex()].transform.position;
-            Vector2 destination = tempDestination + Board.squares[move.GetTargetSquareIndex()].GetComponent<BoxCollider2D>().offset;
+            // Vector2 destination = tempDestination + Board.squares[move.GetTargetSquareIndex()].GetComponent<BoxCollider2D>().offset;
 
-            float duration = Vector2.Distance(origin, destination) / opponentAnimationSpeed;
+            float duration = Vector2.Distance(tempOrigin, tempDestination) / opponentAnimationSpeed;
             Vector2 currentPos;
 
             float currentLerpTime = 0f;
