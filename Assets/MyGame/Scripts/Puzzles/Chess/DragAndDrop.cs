@@ -100,7 +100,7 @@ namespace UnityEngine.Chess
 
         private IEnumerator AnimateOpponentsMove(Move move, Sprite piece, int pieceIndex)
         {
-            pieceRenderer.sprite = piece;
+            pieceRenderer.sprite = piece; 
             YieldInstruction instruction = new WaitForEndOfFrame();
 
             Vector2 tempOrigin = Board.squares[move.GetStartSquareIndex()].transform.position;
@@ -130,7 +130,7 @@ namespace UnityEngine.Chess
                 }
 
                 clampLerpTime = Mathf.Clamp01(currentLerpTime / duration);
-                currentPos = Vector2.Lerp(origin, destination, opponentAnimationCurve.Evaluate(clampLerpTime));
+                currentPos = Vector2.Lerp(tempOrigin, tempDestination, opponentAnimationCurve.Evaluate(clampLerpTime));
 
                 transform.position = currentPos;
                 yield return instruction;
