@@ -11819,7 +11819,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf32ebe9aaa845c39c12519c8b0b1b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  test: 4
   pieceRenderer: {fileID: 8013270728324191264}
   opponentAnimationSpeed: 5
   opponentAnimationCurve:

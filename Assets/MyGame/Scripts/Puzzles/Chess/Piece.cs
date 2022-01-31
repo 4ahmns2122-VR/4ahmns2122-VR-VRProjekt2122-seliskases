@@ -126,29 +126,23 @@ namespace UnityEngine.Chess
         {
             List<int> output = new List<int>();
             int currentRank = Mathf.CeilToInt((float)(startSquare + 1) / 8);
-            
+
             if (isWhitePiece)
             {
-                if(currentSquares[startSquare + 8].pieceRenderer.sprite != null)
-                {
-                    output.Add(startSquare + 8);
+                output.Add(startSquare + 8);
 
-                    if (currentRank == 2 && currentSquares[startSquare + 16].pieceRenderer.sprite != null)
-                    {
-                        output.Add(startSquare + 16);
-                    }
+                if (currentRank == 2)
+                {
+                    output.Add(startSquare + 16);
                 }
             }
             else
             {
-                if (currentSquares[startSquare - 8].pieceRenderer.sprite != null)
-                {
-                    output.Add(startSquare - 8);
+                output.Add(startSquare - 8);
 
-                    if (currentRank == 7 && currentSquares[startSquare - 16].pieceRenderer.sprite != null)
-                    {
-                        output.Add(startSquare - 16);
-                    }
+                if (currentRank == 7)
+                {
+                    output.Add(startSquare - 16);
                 }
             }
 
