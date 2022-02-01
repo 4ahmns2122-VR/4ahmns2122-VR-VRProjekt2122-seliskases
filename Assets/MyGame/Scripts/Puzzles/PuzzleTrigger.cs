@@ -7,6 +7,8 @@ public class PuzzleTrigger : MonoBehaviour
     public GameObject key;
     public Transform keySpawnPos;
 
+    private bool keyIsSpawned = false;
+
     private void Start()
     {
         Board.puzzleFinishedDelegate += PuzzleFinished;
@@ -24,7 +26,12 @@ public class PuzzleTrigger : MonoBehaviour
     {
         UserInterfaceManager.instance.SetToNormalHand();
         UserInterfaceManager.instance.timer.gameObject.SetActive(false);
-        Instantiate(key, keySpawnPos.position, Quaternion.identity);
+
+        if (!keyIsSpawned)
+        {
+            Instantiate(key, keySpawnPos.position, Quaternion.identity);
+            keyIsSpawned = true;
+        }
     }
 
     private void OnDisable()
