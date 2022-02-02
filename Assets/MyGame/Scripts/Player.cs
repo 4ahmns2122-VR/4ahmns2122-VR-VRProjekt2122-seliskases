@@ -16,8 +16,6 @@ public class Player : MonoBehaviour
     {
         postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 1;
         currentTime = 60;
-        mixer.SetFloat("CutoffFrequency", 1200);
-        mixer.SetFloat("Resonance", 1.2f);
     }
 
     private void Update()
@@ -50,7 +48,5 @@ public class Player : MonoBehaviour
         torchIsGrabbed = true;
         postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 0;
         UserInterfaceManager.instance.timer.gameObject.SetActive(false);
-        mixer.SetFloat("CutoffFrequency", 22000);
-        mixer.SetFloat("Resonance", 0);
     }
 }
