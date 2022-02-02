@@ -6,6 +6,7 @@ public class PuzzleTrigger : MonoBehaviour
     public GameObject boardContainer;
     public GameObject key;
     public Transform keySpawnPos;
+    public AudioSource timerSound;
 
     private bool keyIsSpawned = false;
 
@@ -19,6 +20,7 @@ public class PuzzleTrigger : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             boardContainer.SetActive(true);
+            timerSound.PlayOneShot(timerSound.clip);
         }
     }
 
@@ -26,6 +28,8 @@ public class PuzzleTrigger : MonoBehaviour
     {
         UserInterfaceManager.instance.SetToNormalHand();
         UserInterfaceManager.instance.timer.gameObject.SetActive(false);
+
+        timerSound.Stop();
 
         if (!keyIsSpawned)
         {
