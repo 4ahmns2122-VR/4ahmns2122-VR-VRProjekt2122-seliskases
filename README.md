@@ -102,9 +102,9 @@ welche das Bild subtil verzerren, ohne für den Spieler unangenehm zu sein.
 
 ## Limitations
 
- - Couldn't test the functionality of the chess puzzle with the VR-Environment. However, it works fine as a 2D application.
- - Couldn't test the gaze pointer within the VR-Environment. This includes moving the chess pieces as well as the UI Input.
- - Couldn't test final performance with Oculus
+ - When cloning the repository, there can be a bug in the Snow shader that doesn't display the snow over the object color. This can sometimes be fixed by recompiling the shader.
+ - The frame of the chess game could potentially start turning. This is an edge case that only happened once while testing the game.
+ - The grip and trigger inputs of the gaze pointer hand are reversed
 
 ## Packages
 
