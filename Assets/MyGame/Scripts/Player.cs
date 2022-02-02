@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     {
         postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 1;
         currentTime = 60;
-        mixer.SetFloat("CutoffFrequency", 400);
+        mixer.SetFloat("CutoffFrequency", 1200);
         mixer.SetFloat("Resonance", 1.2f);
     }
 
