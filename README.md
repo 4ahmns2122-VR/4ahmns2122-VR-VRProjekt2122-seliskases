@@ -116,7 +116,7 @@ Anmerkung: Die Anforderungen wurden auf 2 Rätsel herabgestuft. So blieben ledig
  - When cloning the repository, there can be a bug in the Snow shader that doesn't display the snow over the object color. This can sometimes be fixed by recompiling the shader:
  https://github.com/4ahmns2122-VR/VRProjekt2122-seliskases/issues/7
  - The frame of the chess game could potentially start turning. This is an edge case that only happened once while testing the game: https://github.com/4ahmns2122-VR/VRProjekt2122-seliskases/issues/8
- - The grip and trigger inputs of the gaze pointer hand are reversed
+ - The grip and trigger inputs of the gaze pointer hand are reversed (Checked Input Routing, however, no mistake was to be found)
 
 ## Packages
 
