@@ -1,6 +1,6 @@
 # VRProjekt2122-seliskases
 
-## Ablauft
+## Ablauf
 Das Spiel dreht sich um den Kontrast zwischen Licht und Dunkelheit, Kälte und
 Wärme. Das Labyrinth besteht aus Schnee und Eis.
 
