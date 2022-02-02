@@ -63,6 +63,10 @@ Das Spiel soll auf einen dunklen und kalten Low-Poly Style setzen.
 Optional: Bei Kälte und Erfrieren kommen Post-Processing Shader zum Einsatz,
 welche das Bild subtil verzerren, ohne für den Spieler unangenehm zu sein.
 
+![alt text](/Screenshots/Screenshot_01.png)
+![alt text](/Screenshots/Screenshot_02.png)
+![alt text](/Screenshots/Screenshot_03.png)
+
 ## Zeitliche Einteilung
 1. Meilenstein (1. Dezember 2021)
 • Funktionierender Build
