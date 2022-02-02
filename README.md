@@ -1,44 +1,18 @@
 # VRProjekt2122-seliskases
 
-## MVP
-Plattform: Oculus Quest
-
-## Ablauf
+## Ablauft
 Das Spiel dreht sich um den Kontrast zwischen Licht und Dunkelheit, Kälte und
-Wärme. Das Labyrinth besteht aus Schnee und Eis. Am Ausgang des Labyrinths
-steht eine Feuerschale. Um aus dem Labyrinth zu entkommen, muss diese Schale
-entzündet werden.
+Wärme. Das Labyrinth besteht aus Schnee und Eis.
 
 Zu Beginn muss in einer gewissen Zeit eine Fackel gefunden werden, sonst erfriert
-der Spieler. (Die ablaufende Zeit wird durch eine Zeitleiste angezeigt.) Wenn der
+der Spieler. (Die ablaufende Zeit wird durch einen Timer angezeigt.) Wenn der
 Spieler die Fackel gefunden hat, muss er nicht mehr gegen die Zeit anspielen.
 
-Mithilfe der Fackel muss der Spieler den Ausgang des Labyrinths finden. Dabei
-kommt er allerdings an ein Hindernis: ein Schneemann steht im Weg. Der Spieler
-muss den Schneemann mit den Händen zerstören.
+Mithilfe der Fackel muss der Spieler den Ausgang des Labyrinths finden. Wenn der Spieler den Ausgang findet, muss der Spieler
+ein zufällig generiertes Schachrätsel lösen. Das Schachbrett wird als 2D-Fenster angezeigt.
+Auch hier muss der Spieler gegen die Zeit ankämpfen. Schafft der Spieler das Rätsel nicht rechtzeitig und macht einen Fehler, verliert er das Spiel und muss von vorn beginnen.
 
-Optional: Wenn der Spieler beim Zerstören des Schneemanns nicht geschickt
-vorgeht und der Schneemann zum Spieler umkippt, erlischt die Fackel. Dadurch
-entsteht wieder der zeitliche Druck, nicht zu erfrieren.
-
-Wenn der Spieler den Ausgang und damit die Feuerschale findet, muss der Spieler
-ein zufällig generiertes Schachrätsel lösen.
-
-MVP: Das Schachbrett wird als 2D-Fenster angezeigt
-Optional: Der Spieler steht vor einem physischen Schachbrett im 3D-Raum
-
-Auch hier muss der Spieler gegen die Zeit ankämpfen. Auditiv wird dies vom
-Geräusch einer tickenden Uhr untermalt. Schafft der Spieler das Rätsel nicht
-rechtzeitig und macht einen Fehler, verliert er das Spiel und muss von vorn
-beginnen.
-
-MVP: Wenn der Spieler das Schach-Rätsel geschafft hat, öffnet sich der Ausgang
-Optional: Schafft der Spieler das Schach-Rätsel, muss er das Holz, in welches sich
-das Schachbrett dann verwandelt, zur Feuerschale bringen und mit der Fackel
-entflammen. Dadurch schmilzt der Ausgang.
-
-So werden drei Fähigkeiten des Spielers auf die Probe gestellt: Orientierung,
-Geschicklichkeit und Strategie.
+Wenn der Spieler das Schach-Rätsel geschafft hat, öffnet sich der Ausgang
 
 ## Auditive Gestaltung
 Auditive Elemente werden vorrangig eingesetzt, um den Spieler bei der Orientierung
@@ -67,16 +41,49 @@ welche das Bild subtil verzerren, ohne für den Spieler unangenehm zu sein.
 ![alt text](/Screenshots/Screenshot_02.png)
 ![alt text](/Screenshots/Screenshot_03.png)
 
+## MVP & Ursprüngliches Konzept
+Plattform: Oculus Quest
+
+Das Spiel dreht sich um den Kontrast zwischen Licht und Dunkelheit, Kälte und
+Wärme. Das Labyrinth besteht aus Schnee und Eis. Am Ausgang des Labyrinths
+steht eine Feuerschale. Um aus dem Labyrinth zu entkommen, muss diese Schale
+entzündet werden.
+
+Zu Beginn muss in einer gewissen Zeit eine Fackel gefunden werden, sonst erfriert
+der Spieler. (Die ablaufende Zeit wird durch eine Zeitleiste angezeigt.) Wenn der
+Spieler die Fackel gefunden hat, muss er nicht mehr gegen die Zeit anspielen.
+
+Mithilfe der Fackel muss der Spieler den Ausgang des Labyrinths finden. Dabei
+kommt er allerdings an ein Hindernis: ein Schneemann steht im Weg. Der Spieler
+muss den Schneemann mit den Händen zerstören.
+
+Wenn der Spieler den Ausgang und damit die Feuerschale findet, muss der Spieler
+ein zufällig generiertes Schachrätsel lösen.
+
+MVP: Das Schachbrett wird als 2D-Fenster angezeigt
+
+Auch hier muss der Spieler gegen die Zeit ankämpfen. Auditiv wird dies vom
+Geräusch einer tickenden Uhr untermalt. Schafft der Spieler das Rätsel nicht
+rechtzeitig und macht einen Fehler, verliert er das Spiel und muss von vorn
+beginnen.
+
+MVP: Wenn der Spieler das Schach-Rätsel geschafft hat, öffnet sich der Ausgang
+
+So werden drei Fähigkeiten des Spielers auf die Probe gestellt: Orientierung,
+Geschicklichkeit und Strategie.
+
+Anmerkung: Die Anforderungen wurden auf 2 Rätsel herabgestuft. So blieben lediglich die Fackel und das Schachspiel bestehen. Der Schneemann und die Feuerschale wurden nicht umgesetzt.
+
 ## Zeitliche Einteilung
-1. Meilenstein (1. Dezember 2021)
+1. Meilenstein (1. Dezember 2021) - vollständig erreicht
 • Funktionierender Build
 • Teleportation
 • Funktionierendes Schach-Puzzle
 
-2. Meilenstein: 22. Dezember 2021
+2. Meilenstein: 22. Dezember 2021 - Limitation: Schach funktionierte nicht mit VR-Input
 • Alle Puzzles funktionieren
 
-3. Meilenstein (19. Jänner 2021):
+3. Meilenstein (19. Jänner 2021): Limitation: Schach funktionierte nicht mit VR-Input
 • Fertige eingebaute Ambiance-Sounds
 • 3D-Modelle & Animationen eingebaut
 • Optional: Post-Processing
