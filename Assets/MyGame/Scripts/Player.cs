@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
 
         torchIsGrabbed = false;
         postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 1;
+        UserInterfaceManager.instance.timer.gameObject.SetActive(true);
         currentTime = 60;
     }
 }
