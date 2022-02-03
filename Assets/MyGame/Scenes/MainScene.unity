@@ -7571,8 +7571,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.0011901855
-      value: 0.050994873
+      time: 0
+      value: 0.041412354
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -7580,8 +7580,8 @@ AudioSource:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.068799555
-      value: 0
+      time: 0.07282406
+      value: 0.085754395
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -7676,8 +7676,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.022743225
-      value: 0.51501465
+      time: 0
+      value: 0.12173462
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -7685,8 +7685,8 @@ AudioSource:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.26721805
-      value: 0
+      time: 0.24509281
+      value: 0.23950195
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -7782,7 +7782,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.8239136
+      value: 0.081710815
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -7790,8 +7790,8 @@ AudioSource:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.30952963
-      value: 0
+      time: 0.16869101
+      value: 0.1774292
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -11766,15 +11766,6 @@ AudioSource:
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
     - serializedVersion: 3
       time: 0.9094361
       value: 0
