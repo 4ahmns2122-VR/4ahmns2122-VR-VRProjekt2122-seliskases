@@ -39,7 +39,7 @@ public class PuzzleTrigger : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         Board.puzzleFinishedDelegate -= PuzzleFinished;
     }

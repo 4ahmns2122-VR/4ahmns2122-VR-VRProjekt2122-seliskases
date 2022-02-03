@@ -54,6 +54,9 @@ namespace UnityEngine.Chess
 
         private void Start()
         {
+            squares = new Square[64];
+            whiteToMove = true;
+
             UserInterfaceManager.instance.SetToGazeHand();
 
             UserInterfaceManager.instance.timer.gameObject.SetActive(true);
@@ -206,6 +209,13 @@ namespace UnityEngine.Chess
             currentMoves = new List<Move>(puzzles[currentPuzzleIndex].moves);
         }
 
+        private void OnDestroy()
+        {
+            wrongMoveDelegate -= WrongMove;
+            puzzleSolvedDelegate -= PuzzleSolved;
+        }
+
         #endregion
     }
+
 }
