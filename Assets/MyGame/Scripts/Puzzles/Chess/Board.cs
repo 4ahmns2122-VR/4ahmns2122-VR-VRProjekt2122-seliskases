@@ -58,7 +58,6 @@ namespace UnityEngine.Chess
 
             UserInterfaceManager.instance.timer.gameObject.SetActive(true);
             currentTime = timeToSolve;
-            currentTime = 270;
 
             CreateGraphicalBoard();
             LoadPuzzle(puzzles[currentPuzzleIndex]);
@@ -75,11 +74,11 @@ namespace UnityEngine.Chess
 
             Color color = Color.white;
 
-            if (currentTime > 40)
+            if (currentTime > (timeToSolve / 3 * 2))
             {
                 color = Color.green;
             }
-            else if (currentTime > 20)
+            else if (currentTime > (timeToSolve / 3))
             {
                 color = Color.yellow;
             }

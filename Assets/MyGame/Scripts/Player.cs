@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
             color = Color.red;
         } else
         {
-            UserInterfaceManager.instance.DisplayRestartPanel("You lost!");
+            UserInterfaceManager.instance.DisplayRestartPanel("You froze to death!");
         }
 
         UserInterfaceManager.instance.SetTimer(currentTime, color);
