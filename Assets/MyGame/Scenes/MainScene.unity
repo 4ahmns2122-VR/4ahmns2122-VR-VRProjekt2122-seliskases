@@ -8668,7 +8668,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5a24a380916d14db9775daab4fe333, type: 3}
@@ -11682,7 +11682,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -11718,20 +11718,20 @@ AudioSource:
     - serializedVersion: 3
       time: 0.01486969
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.22881405
+      outSlope: 0.22881405
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33333334
+      outWeight: 1
     - serializedVersion: 3
-      time: 0.0669155
+      time: 0.34728813
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.045638353
+      outSlope: 0.045638353
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 1
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -11865,7 +11865,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 091098f1f142f4f259d0319fcb1222ff, type: 3}
   canvas: {fileID: 702226885}
   puzzles:
-  - {fileID: 11400000, guid: 4c027493818334979b0feb79ec8c4bf7, type: 2}
+  - {fileID: 11400000, guid: 82e595631b895412182f253c7d12c8ad, type: 2}
   - {fileID: 11400000, guid: 82e595631b895412182f253c7d12c8ad, type: 2}
   timeToSolve: 60
   lightColor: {r: 0.9254902, g: 0.91764706, b: 0.91764706, a: 1}
