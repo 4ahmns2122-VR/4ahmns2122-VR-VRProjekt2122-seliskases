@@ -21,6 +21,7 @@ public class PuzzleTrigger : MonoBehaviour
         {
             boardContainer.SetActive(true);
             timerSound.PlayOneShot(timerSound.clip);
+            Player.chessIsActivated = true;
         }
     }
 

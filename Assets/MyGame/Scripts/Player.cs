@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private float currentTime;
     private bool torchIsGrabbed = false;
 
+    public static bool chessIsActivated = false;
+
     private void Start()
     {
         postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 1;
@@ -48,5 +50,14 @@ public class Player : MonoBehaviour
         torchIsGrabbed = true;
         postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 0;
         UserInterfaceManager.instance.timer.gameObject.SetActive(false);
+    }
+
+    public void OnTorchLeft()
+    {
+        if (chessIsActivated) return;
+
+        torchIsGrabbed = false;
+        postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 1;
+        currentTime = 60;
     }
 }
