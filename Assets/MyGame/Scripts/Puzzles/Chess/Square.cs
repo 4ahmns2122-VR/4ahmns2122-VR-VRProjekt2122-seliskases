@@ -39,6 +39,9 @@ namespace UnityEngine.Chess
         // This function is triggered by the XR Raycast Event which is assigned in the inspector
         public void OnRaycast()
         {
+            int[] legalSquares = Piece.GetLegalSquares(pieceIndex, squareIndex, Board.squares);
+            if (legalSquares.Length == 0) return;
+
             if (DragAndDrop.instance.RequestPiecePlacement(this))
             {
                 foreach (var square in Board.squares)
@@ -60,7 +63,6 @@ namespace UnityEngine.Chess
 
             backgroundRenderer.color = highlightedStartSquareColor;
 
-            int[] legalSquares = Piece.GetLegalSquares(pieceIndex, squareIndex, Board.squares);
             foreach (var legalSquareIndex in legalSquares)
             {
                 foreach (var square in Board.squares)

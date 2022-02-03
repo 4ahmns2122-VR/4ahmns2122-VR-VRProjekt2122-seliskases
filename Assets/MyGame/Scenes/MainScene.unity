@@ -815,7 +815,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: faa0ac2c305084416b1802fb75745654, type: 2}
   timeUntilFrozen: 60
+  torchDistanceThreshold: 3
   postProcessProfile: {fileID: 11400000, guid: fa63adc92f76745bb9df876f340376b8, type: 2}
+  torch: {fileID: 4071415914663012326}
 --- !u!1 &259715463
 GameObject:
   m_ObjectHideFlags: 0
@@ -11539,34 +11541,10 @@ MonoBehaviour:
       m_Calls: []
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 223974233}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: OnTorchGrabbed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_HoverExited:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 223974233}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: OnTorchLeft
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -11879,6 +11857,7 @@ MonoBehaviour:
   puzzles:
   - {fileID: 11400000, guid: 82e595631b895412182f253c7d12c8ad, type: 2}
   - {fileID: 11400000, guid: 4c027493818334979b0feb79ec8c4bf7, type: 2}
+  - {fileID: 11400000, guid: 3e01c466b80b041d5bd6a4894869bcb6, type: 2}
   timeToSolve: 180
   lightColor: {r: 0.9254902, g: 0.91764706, b: 0.91764706, a: 1}
   lightHighlightedTargetColor: {r: 0.8784314, g: 0.8671748, b: 0.68235296, a: 1}

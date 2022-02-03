@@ -7,7 +7,9 @@ public class Player : MonoBehaviour
     public AudioMixer mixer;
 
     public float timeUntilFrozen;
+    public float torchDistanceThreshold;
     public PostProcessProfile postProcessProfile;
+    public GameObject torch;
 
     private float currentTime;
     private bool torchIsGrabbed = false;
@@ -18,10 +20,26 @@ public class Player : MonoBehaviour
     {
         postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 1;
         currentTime = 60;
+        chessIsActivated = false;
     }
 
     private void Update()
     {
+        if (Vector3.Distance(gameObject.transform.position, torch.transform.position) < torchDistanceThreshold && !torchIsGrabbed)
+        {
+            torchIsGrabbed = true;
+            postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 0;
+            UserInterfaceManager.instance.timer.gameObject.SetActive(false);
+        } else if(Vector3.Distance(gameObject.transform.position, torch.transform.position) > torchDistanceThreshold && torchIsGrabbed)
+        {
+            if (chessIsActivated) return;
+
+            torchIsGrabbed = false;
+            postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 1;
+            UserInterfaceManager.instance.timer.gameObject.SetActive(true);
+            currentTime = 60;
+        }
+
         if (torchIsGrabbed) return;
 
         currentTime -= Time.deltaTime;
@@ -43,22 +61,5 @@ public class Player : MonoBehaviour
         }
 
         UserInterfaceManager.instance.SetTimer(currentTime, "Grab the torch before you freeze to death - ", color);
-    }
-
-    public void OnTorchGrabbed()
-    {
-        torchIsGrabbed = true;
-        postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 0;
-        UserInterfaceManager.instance.timer.gameObject.SetActive(false);
-    }
-
-    public void OnTorchLeft()
-    {
-        if (chessIsActivated) return;
-
-        torchIsGrabbed = false;
-        postProcessProfile.GetSetting<ChromaticAberration>().intensity.value = 1;
-        UserInterfaceManager.instance.timer.gameObject.SetActive(true);
-        currentTime = 60;
     }
 }
