@@ -91,7 +91,7 @@ namespace UnityEngine.Chess
                 UserInterfaceManager.instance.DisplayRestartPanel("You lost!");
             }
 
-            UserInterfaceManager.instance.SetTimer(currentTime, color);
+            UserInterfaceManager.instance.SetTimer(currentTime, "", color);
         }
 
         private void CreateGraphicalBoard()

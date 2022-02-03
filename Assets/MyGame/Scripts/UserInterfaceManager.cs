@@ -29,12 +29,12 @@ public class UserInterfaceManager : MonoBehaviour
         message.text = msg;
     }
 
-    public void SetTimer(float time, Color color)
+    public void SetTimer(float time, string text, Color color)
     {
         float minutes = Mathf.Floor(time / 60);
         float seconds = Mathf.RoundToInt(time % 60);
 
-        timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timer.text = text + string.Format("{0:00}:{1:00}", minutes, seconds);
         timer.color = color;
     }
 

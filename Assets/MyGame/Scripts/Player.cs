@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
             UserInterfaceManager.instance.DisplayRestartPanel("You froze to death!");
         }
 
-        UserInterfaceManager.instance.SetTimer(currentTime, color);
+        UserInterfaceManager.instance.SetTimer(currentTime, "Grab the torch before you freeze to death - ", color);
     }
 
     public void OnTorchGrabbed()
